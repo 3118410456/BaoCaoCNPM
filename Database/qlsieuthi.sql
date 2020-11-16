@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 16, 2020 lúc 04:01 AM
+-- Thời gian đã tạo: Th10 16, 2020 lúc 04:14 AM
 -- Phiên bản máy phục vụ: 10.4.14-MariaDB
 -- Phiên bản PHP: 7.2.33
 
@@ -364,6 +364,20 @@ CREATE TABLE `taikhoan` (
   `TrangThai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `thongtinkho`
+--
+
+CREATE TABLE `thongtinkho` (
+  `MaKho` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `MaSP` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `TenLoaiSP` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `SoLuong` int(11) NOT NULL,
+  `DonViTinh` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 --
 -- Chỉ mục cho các bảng đã đổ
 --
@@ -510,6 +524,13 @@ ALTER TABLE `taikhoan`
   ADD KEY `fk_tk` (`MaNV`);
 
 --
+-- Chỉ mục cho bảng `thongtinkho`
+--
+ALTER TABLE `thongtinkho`
+  ADD PRIMARY KEY (`MaKho`),
+  ADD KEY `fk2_ttkho` (`MaSP`);
+
+--
 -- Các ràng buộc cho các bảng đã đổ
 --
 
@@ -602,6 +623,13 @@ ALTER TABLE `sanphamloi`
 --
 ALTER TABLE `taikhoan`
   ADD CONSTRAINT `fk_tk` FOREIGN KEY (`MaNV`) REFERENCES `nhanvien` (`MaNV`);
+
+--
+-- Các ràng buộc cho bảng `thongtinkho`
+--
+ALTER TABLE `thongtinkho`
+  ADD CONSTRAINT `fk1_ttkho` FOREIGN KEY (`MaKho`) REFERENCES `kho` (`MaKho`),
+  ADD CONSTRAINT `fk2_ttkho` FOREIGN KEY (`MaSP`) REFERENCES `sanpham` (`MaSP`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
