@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 16, 2020 lúc 04:14 AM
+-- Thời gian đã tạo: Th10 16, 2020 lúc 05:44 AM
 -- Phiên bản máy phục vụ: 10.4.14-MariaDB
 -- Phiên bản PHP: 7.2.33
 
@@ -333,7 +333,8 @@ CREATE TABLE `sanpham` (
   `DonViTinh` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `GiaNhap` double NOT NULL,
   `GiaBan` double NOT NULL,
-  `MaNCC` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `MaNCC` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `TrangThai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
