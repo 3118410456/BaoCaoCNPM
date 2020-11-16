@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 15, 2020 at 01:06 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.3
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th10 16, 2020 lúc 04:01 AM
+-- Phiên bản máy phục vụ: 10.4.14-MariaDB
+-- Phiên bản PHP: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `qlsieuthi`
+-- Cơ sở dữ liệu: `qlsieuthi`
 --
 CREATE DATABASE IF NOT EXISTS `qlsieuthi` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 USE `qlsieuthi`;
@@ -27,7 +26,7 @@ USE `qlsieuthi`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cthd`
+-- Cấu trúc bảng cho bảng `cthd`
 --
 
 CREATE TABLE `cthd` (
@@ -40,7 +39,7 @@ CREATE TABLE `cthd` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ctkhuyenmaivip`
+-- Cấu trúc bảng cho bảng `ctkhuyenmaivip`
 --
 
 CREATE TABLE `ctkhuyenmaivip` (
@@ -51,7 +50,7 @@ CREATE TABLE `ctkhuyenmaivip` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ctpn`
+-- Cấu trúc bảng cho bảng `ctpn`
 --
 
 CREATE TABLE `ctpn` (
@@ -67,7 +66,7 @@ CREATE TABLE `ctpn` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ctpx`
+-- Cấu trúc bảng cho bảng `ctpx`
 --
 
 CREATE TABLE `ctpx` (
@@ -80,7 +79,7 @@ CREATE TABLE `ctpx` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `doanhsokhachhang`
+-- Cấu trúc bảng cho bảng `doanhsokhachhang`
 --
 
 CREATE TABLE `doanhsokhachhang` (
@@ -98,7 +97,7 @@ CREATE TABLE `doanhsokhachhang` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `doanhsonhanvien`
+-- Cấu trúc bảng cho bảng `doanhsonhanvien`
 --
 
 CREATE TABLE `doanhsonhanvien` (
@@ -106,18 +105,18 @@ CREATE TABLE `doanhsonhanvien` (
   `MaNV` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `TenNV` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `Nam` year(4) NOT NULL,
-  `DSQ1` int(11) DEFAULT 0,
-  `DSQ2` int(11) DEFAULT 0,
-  `DSQ3` int(11) DEFAULT 0,
-  `DSQ4` int(11) DEFAULT 0,
+  `DSQuy1` int(11) DEFAULT 0,
+  `DSQuy2` int(11) DEFAULT 0,
+  `DSQuy3` int(11) DEFAULT 0,
+  `DSQuy4` int(11) DEFAULT 0,
   `DSNam` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `doanhsonhanvien`
+-- Đang đổ dữ liệu cho bảng `doanhsonhanvien`
 --
 
-INSERT INTO `doanhsonhanvien` (`MaDS`, `MaNV`, `TenNV`, `Nam`, `DSQ1`, `DSQ2`, `DSQ3`, `DSQ4`, `DSNam`) VALUES
+INSERT INTO `doanhsonhanvien` (`MaDS`, `MaNV`, `TenNV`, `Nam`, `DSQuy1`, `DSQuy2`, `DSQuy3`, `DSQuy4`, `DSNam`) VALUES
 ('ds1', 'nv1', 'hello', 2019, 25, 20, 10, 5, 60),
 ('ds2', 'nv1', 'hello', 2020, 0, 0, 0, 0, 0),
 ('ds3', 'nv1', 'hello', 2021, 0, 0, 0, 0, 0);
@@ -125,7 +124,24 @@ INSERT INTO `doanhsonhanvien` (`MaDS`, `MaNV`, `TenNV`, `Nam`, `DSQ1`, `DSQ2`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hoadon`
+-- Cấu trúc bảng cho bảng `doanhsosp`
+--
+
+CREATE TABLE `doanhsosp` (
+  `MaDS` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `MaSP` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `DonViTinh` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `DSQuy1` int(11) NOT NULL DEFAULT 0,
+  `DSQuy2` int(11) NOT NULL DEFAULT 0,
+  `DSQuy3` int(11) NOT NULL DEFAULT 0,
+  `DSQuy4` int(11) NOT NULL DEFAULT 0,
+  `DSNam` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `hoadon`
 --
 
 CREATE TABLE `hoadon` (
@@ -143,7 +159,7 @@ CREATE TABLE `hoadon` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `khachhang`
+-- Cấu trúc bảng cho bảng `khachhang`
 --
 
 CREATE TABLE `khachhang` (
@@ -153,7 +169,7 @@ CREATE TABLE `khachhang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `khachhang`
+-- Đang đổ dữ liệu cho bảng `khachhang`
 --
 
 INSERT INTO `khachhang` (`MaKH`, `HoTen`, `SDT`) VALUES
@@ -164,7 +180,7 @@ INSERT INTO `khachhang` (`MaKH`, `HoTen`, `SDT`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kho`
+-- Cấu trúc bảng cho bảng `kho`
 --
 
 CREATE TABLE `kho` (
@@ -176,7 +192,7 @@ CREATE TABLE `kho` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `khuyenmai`
+-- Cấu trúc bảng cho bảng `khuyenmai`
 --
 
 CREATE TABLE `khuyenmai` (
@@ -189,7 +205,7 @@ CREATE TABLE `khuyenmai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `khuyenmai`
+-- Đang đổ dữ liệu cho bảng `khuyenmai`
 --
 
 INSERT INTO `khuyenmai` (`MaKM`, `TenCT`, `NgayBD`, `NgayKT`, `GiaTienToiThieu`, `PhanTram`) VALUES
@@ -198,7 +214,7 @@ INSERT INTO `khuyenmai` (`MaKM`, `TenCT`, `NgayBD`, `NgayKT`, `GiaTienToiThieu`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `khuyenmaivip`
+-- Cấu trúc bảng cho bảng `khuyenmaivip`
 --
 
 CREATE TABLE `khuyenmaivip` (
@@ -213,7 +229,7 @@ CREATE TABLE `khuyenmaivip` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nhacungcap`
+-- Cấu trúc bảng cho bảng `nhacungcap`
 --
 
 CREATE TABLE `nhacungcap` (
@@ -222,7 +238,7 @@ CREATE TABLE `nhacungcap` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `nhacungcap`
+-- Đang đổ dữ liệu cho bảng `nhacungcap`
 --
 
 INSERT INTO `nhacungcap` (`MaNCC`, `TenNCC`) VALUES
@@ -231,7 +247,7 @@ INSERT INTO `nhacungcap` (`MaNCC`, `TenNCC`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nhanvien`
+-- Cấu trúc bảng cho bảng `nhanvien`
 --
 
 CREATE TABLE `nhanvien` (
@@ -245,7 +261,7 @@ CREATE TABLE `nhanvien` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `nhanvien`
+-- Đang đổ dữ liệu cho bảng `nhanvien`
 --
 
 INSERT INTO `nhanvien` (`MaNV`, `HoTen`, `NgaySinh`, `GioiTinh`, `DiaChi`, `SoDienThoai`, `Email`) VALUES
@@ -254,7 +270,7 @@ INSERT INTO `nhanvien` (`MaNV`, `HoTen`, `NgaySinh`, `GioiTinh`, `DiaChi`, `SoDi
 -- --------------------------------------------------------
 
 --
--- Table structure for table `phanloai`
+-- Cấu trúc bảng cho bảng `phanloai`
 --
 
 CREATE TABLE `phanloai` (
@@ -263,7 +279,7 @@ CREATE TABLE `phanloai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `phanloai`
+-- Đang đổ dữ liệu cho bảng `phanloai`
 --
 
 INSERT INTO `phanloai` (`MaLoai`, `TenLoai`) VALUES
@@ -272,7 +288,7 @@ INSERT INTO `phanloai` (`MaLoai`, `TenLoai`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `phieunhap`
+-- Cấu trúc bảng cho bảng `phieunhap`
 --
 
 CREATE TABLE `phieunhap` (
@@ -289,7 +305,7 @@ CREATE TABLE `phieunhap` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `phieuxuat`
+-- Cấu trúc bảng cho bảng `phieuxuat`
 --
 
 CREATE TABLE `phieuxuat` (
@@ -304,12 +320,13 @@ CREATE TABLE `phieuxuat` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sanpham`
+-- Cấu trúc bảng cho bảng `sanpham`
 --
 
 CREATE TABLE `sanpham` (
   `MaSP` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `TenSP` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `AnhSP` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `MaLoai` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `TenLoaiSP` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `SoLuong` int(11) NOT NULL,
@@ -322,7 +339,7 @@ CREATE TABLE `sanpham` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sanphamloi`
+-- Cấu trúc bảng cho bảng `sanphamloi`
 --
 
 CREATE TABLE `sanphamloi` (
@@ -337,7 +354,7 @@ CREATE TABLE `sanphamloi` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `taikhoan`
+-- Cấu trúc bảng cho bảng `taikhoan`
 --
 
 CREATE TABLE `taikhoan` (
@@ -348,39 +365,39 @@ CREATE TABLE `taikhoan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `cthd`
+-- Chỉ mục cho bảng `cthd`
 --
 ALTER TABLE `cthd`
   ADD PRIMARY KEY (`MaHD`),
   ADD KEY `fk2_cthd` (`MaSP`);
 
 --
--- Indexes for table `ctkhuyenmaivip`
+-- Chỉ mục cho bảng `ctkhuyenmaivip`
 --
 ALTER TABLE `ctkhuyenmaivip`
   ADD PRIMARY KEY (`MaKM`),
   ADD KEY `fk2_ctkmvip` (`MaKH`);
 
 --
--- Indexes for table `ctpn`
+-- Chỉ mục cho bảng `ctpn`
 --
 ALTER TABLE `ctpn`
   ADD PRIMARY KEY (`MaPN`),
   ADD KEY `fk2_ctpn` (`MaSP`);
 
 --
--- Indexes for table `ctpx`
+-- Chỉ mục cho bảng `ctpx`
 --
 ALTER TABLE `ctpx`
   ADD PRIMARY KEY (`MaPX`),
   ADD KEY `fk2_ctpx` (`MaSP`);
 
 --
--- Indexes for table `doanhsokhachhang`
+-- Chỉ mục cho bảng `doanhsokhachhang`
 --
 ALTER TABLE `doanhsokhachhang`
   ADD PRIMARY KEY (`MaDS`),
@@ -388,7 +405,7 @@ ALTER TABLE `doanhsokhachhang`
   ADD KEY `fk_dskh` (`MaKH`);
 
 --
--- Indexes for table `doanhsonhanvien`
+-- Chỉ mục cho bảng `doanhsonhanvien`
 --
 ALTER TABLE `doanhsonhanvien`
   ADD PRIMARY KEY (`MaDS`),
@@ -396,7 +413,14 @@ ALTER TABLE `doanhsonhanvien`
   ADD KEY `fk1_dsnv` (`MaNV`);
 
 --
--- Indexes for table `hoadon`
+-- Chỉ mục cho bảng `doanhsosp`
+--
+ALTER TABLE `doanhsosp`
+  ADD PRIMARY KEY (`MaDS`),
+  ADD KEY `fk1_dssp` (`MaSP`);
+
+--
+-- Chỉ mục cho bảng `hoadon`
 --
 ALTER TABLE `hoadon`
   ADD PRIMARY KEY (`MaHD`),
@@ -405,49 +429,49 @@ ALTER TABLE `hoadon`
   ADD KEY `fk4_hd` (`MaKM`);
 
 --
--- Indexes for table `khachhang`
+-- Chỉ mục cho bảng `khachhang`
 --
 ALTER TABLE `khachhang`
   ADD PRIMARY KEY (`MaKH`);
 
 --
--- Indexes for table `kho`
+-- Chỉ mục cho bảng `kho`
 --
 ALTER TABLE `kho`
   ADD PRIMARY KEY (`MaKho`);
 
 --
--- Indexes for table `khuyenmai`
+-- Chỉ mục cho bảng `khuyenmai`
 --
 ALTER TABLE `khuyenmai`
   ADD PRIMARY KEY (`MaKM`);
 
 --
--- Indexes for table `khuyenmaivip`
+-- Chỉ mục cho bảng `khuyenmaivip`
 --
 ALTER TABLE `khuyenmaivip`
   ADD PRIMARY KEY (`MaKM`);
 
 --
--- Indexes for table `nhacungcap`
+-- Chỉ mục cho bảng `nhacungcap`
 --
 ALTER TABLE `nhacungcap`
   ADD PRIMARY KEY (`MaNCC`);
 
 --
--- Indexes for table `nhanvien`
+-- Chỉ mục cho bảng `nhanvien`
 --
 ALTER TABLE `nhanvien`
   ADD PRIMARY KEY (`MaNV`);
 
 --
--- Indexes for table `phanloai`
+-- Chỉ mục cho bảng `phanloai`
 --
 ALTER TABLE `phanloai`
   ADD PRIMARY KEY (`MaLoai`);
 
 --
--- Indexes for table `phieunhap`
+-- Chỉ mục cho bảng `phieunhap`
 --
 ALTER TABLE `phieunhap`
   ADD PRIMARY KEY (`MaPN`),
@@ -456,7 +480,7 @@ ALTER TABLE `phieunhap`
   ADD KEY `fk3_pn` (`MaKho`);
 
 --
--- Indexes for table `phieuxuat`
+-- Chỉ mục cho bảng `phieuxuat`
 --
 ALTER TABLE `phieuxuat`
   ADD PRIMARY KEY (`MaPX`),
@@ -464,7 +488,7 @@ ALTER TABLE `phieuxuat`
   ADD KEY `fk2_px` (`MaKho`);
 
 --
--- Indexes for table `sanpham`
+-- Chỉ mục cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
   ADD PRIMARY KEY (`MaSP`),
@@ -472,65 +496,71 @@ ALTER TABLE `sanpham`
   ADD KEY `fk2_sp` (`MaNCC`);
 
 --
--- Indexes for table `sanphamloi`
+-- Chỉ mục cho bảng `sanphamloi`
 --
 ALTER TABLE `sanphamloi`
   ADD PRIMARY KEY (`MaSP`),
   ADD KEY `fk2_spl` (`MaNCC`);
 
 --
--- Indexes for table `taikhoan`
+-- Chỉ mục cho bảng `taikhoan`
 --
 ALTER TABLE `taikhoan`
   ADD PRIMARY KEY (`username`),
   ADD KEY `fk_tk` (`MaNV`);
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `cthd`
+-- Các ràng buộc cho bảng `cthd`
 --
 ALTER TABLE `cthd`
   ADD CONSTRAINT `fk1_cthd` FOREIGN KEY (`MaHD`) REFERENCES `hoadon` (`MaHD`),
   ADD CONSTRAINT `fk2_cthd` FOREIGN KEY (`MaSP`) REFERENCES `sanpham` (`MaSP`);
 
 --
--- Constraints for table `ctkhuyenmaivip`
+-- Các ràng buộc cho bảng `ctkhuyenmaivip`
 --
 ALTER TABLE `ctkhuyenmaivip`
   ADD CONSTRAINT `fk1_ctkmvip` FOREIGN KEY (`MaKM`) REFERENCES `khuyenmaivip` (`MaKM`),
   ADD CONSTRAINT `fk2_ctkmvip` FOREIGN KEY (`MaKH`) REFERENCES `khachhang` (`MaKH`);
 
 --
--- Constraints for table `ctpn`
+-- Các ràng buộc cho bảng `ctpn`
 --
 ALTER TABLE `ctpn`
   ADD CONSTRAINT `fk1_ctpn` FOREIGN KEY (`MaPN`) REFERENCES `phieunhap` (`MaPN`),
   ADD CONSTRAINT `fk2_ctpn` FOREIGN KEY (`MaSP`) REFERENCES `sanpham` (`MaSP`);
 
 --
--- Constraints for table `ctpx`
+-- Các ràng buộc cho bảng `ctpx`
 --
 ALTER TABLE `ctpx`
   ADD CONSTRAINT `fk1_ctpx` FOREIGN KEY (`MaPX`) REFERENCES `phieuxuat` (`MaPX`),
   ADD CONSTRAINT `fk2_ctpx` FOREIGN KEY (`MaSP`) REFERENCES `sanpham` (`MaSP`);
 
 --
--- Constraints for table `doanhsokhachhang`
+-- Các ràng buộc cho bảng `doanhsokhachhang`
 --
 ALTER TABLE `doanhsokhachhang`
   ADD CONSTRAINT `fk_dskh` FOREIGN KEY (`MaKH`) REFERENCES `khachhang` (`MaKH`);
 
 --
--- Constraints for table `doanhsonhanvien`
+-- Các ràng buộc cho bảng `doanhsonhanvien`
 --
 ALTER TABLE `doanhsonhanvien`
   ADD CONSTRAINT `fk1_dsnv` FOREIGN KEY (`MaNV`) REFERENCES `nhanvien` (`MaNV`);
 
 --
--- Constraints for table `hoadon`
+-- Các ràng buộc cho bảng `doanhsosp`
+--
+ALTER TABLE `doanhsosp`
+  ADD CONSTRAINT `fk1_dssp` FOREIGN KEY (`MaSP`) REFERENCES `sanpham` (`MaSP`);
+
+--
+-- Các ràng buộc cho bảng `hoadon`
 --
 ALTER TABLE `hoadon`
   ADD CONSTRAINT `fk1_hd` FOREIGN KEY (`MaKH`) REFERENCES `khachhang` (`MaKH`),
@@ -539,7 +569,7 @@ ALTER TABLE `hoadon`
   ADD CONSTRAINT `fk4_hd` FOREIGN KEY (`MaKM`) REFERENCES `khuyenmaivip` (`MaKM`);
 
 --
--- Constraints for table `phieunhap`
+-- Các ràng buộc cho bảng `phieunhap`
 --
 ALTER TABLE `phieunhap`
   ADD CONSTRAINT `fk1_pn` FOREIGN KEY (`MaNV`) REFERENCES `nhanvien` (`MaNV`),
@@ -547,28 +577,28 @@ ALTER TABLE `phieunhap`
   ADD CONSTRAINT `fk3_pn` FOREIGN KEY (`MaKho`) REFERENCES `kho` (`MaKho`);
 
 --
--- Constraints for table `phieuxuat`
+-- Các ràng buộc cho bảng `phieuxuat`
 --
 ALTER TABLE `phieuxuat`
   ADD CONSTRAINT `fk1_px` FOREIGN KEY (`MaNV`) REFERENCES `nhanvien` (`MaNV`),
   ADD CONSTRAINT `fk2_px` FOREIGN KEY (`MaKho`) REFERENCES `kho` (`MaKho`);
 
 --
--- Constraints for table `sanpham`
+-- Các ràng buộc cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
   ADD CONSTRAINT `fk1_sp` FOREIGN KEY (`MaLoai`) REFERENCES `phanloai` (`MaLoai`),
   ADD CONSTRAINT `fk2_sp` FOREIGN KEY (`MaNCC`) REFERENCES `nhacungcap` (`MaNCC`);
 
 --
--- Constraints for table `sanphamloi`
+-- Các ràng buộc cho bảng `sanphamloi`
 --
 ALTER TABLE `sanphamloi`
   ADD CONSTRAINT `fk1_spl` FOREIGN KEY (`MaSP`) REFERENCES `sanpham` (`MaSP`),
   ADD CONSTRAINT `fk2_spl` FOREIGN KEY (`MaNCC`) REFERENCES `nhacungcap` (`MaNCC`);
 
 --
--- Constraints for table `taikhoan`
+-- Các ràng buộc cho bảng `taikhoan`
 --
 ALTER TABLE `taikhoan`
   ADD CONSTRAINT `fk_tk` FOREIGN KEY (`MaNV`) REFERENCES `nhanvien` (`MaNV`);
