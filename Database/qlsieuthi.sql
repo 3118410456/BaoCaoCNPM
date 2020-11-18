@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 17, 2020 lúc 05:11 PM
+-- Thời gian đã tạo: Th10 18, 2020 lúc 06:05 AM
 -- Phiên bản máy phục vụ: 10.4.14-MariaDB
 -- Phiên bản PHP: 7.2.34
 
@@ -206,8 +206,8 @@ CREATE TABLE `kho` (
 CREATE TABLE `khuyenmai` (
   `MaKM` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `TenCT` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `NgayBD` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `NgayKT` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `NgayBD` timestamp NOT NULL DEFAULT current_timestamp(),
+  `NgayKT` timestamp NOT NULL DEFAULT current_timestamp(),
   `GiaTienToiThieu` double NOT NULL,
   `PhanTram` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -217,7 +217,7 @@ CREATE TABLE `khuyenmai` (
 --
 
 INSERT INTO `khuyenmai` (`MaKM`, `TenCT`, `NgayBD`, `NgayKT`, `GiaTienToiThieu`, `PhanTram`) VALUES
-('HFMLH879612', 'Khai trương', '14/06/2020', '15/06/2020', 0, 50);
+('HFMLH879612', 'Khai trương', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 50);
 
 -- --------------------------------------------------------
 
