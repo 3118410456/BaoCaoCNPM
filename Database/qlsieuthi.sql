@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 16, 2020 lúc 05:44 AM
+-- Thời gian đã tạo: Th10 18, 2020 lúc 06:05 AM
 -- Phiên bản máy phục vụ: 10.4.14-MariaDB
--- Phiên bản PHP: 7.2.33
+-- Phiên bản PHP: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -131,12 +131,20 @@ CREATE TABLE `doanhsosp` (
   `MaDS` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `MaSP` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `DonViTinh` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Nam` year(4) NOT NULL,
   `DSQuy1` int(11) NOT NULL DEFAULT 0,
   `DSQuy2` int(11) NOT NULL DEFAULT 0,
   `DSQuy3` int(11) NOT NULL DEFAULT 0,
   `DSQuy4` int(11) NOT NULL DEFAULT 0,
   `DSNam` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `doanhsosp`
+--
+
+INSERT INTO `doanhsosp` (`MaDS`, `MaSP`, `DonViTinh`, `Nam`, `DSQuy1`, `DSQuy2`, `DSQuy3`, `DSQuy4`, `DSNam`) VALUES
+('1', '1', 'cái', 2020, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -198,8 +206,8 @@ CREATE TABLE `kho` (
 CREATE TABLE `khuyenmai` (
   `MaKM` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `TenCT` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `NgayBD` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `NgayKT` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `NgayBD` timestamp NOT NULL DEFAULT current_timestamp(),
+  `NgayKT` timestamp NOT NULL DEFAULT current_timestamp(),
   `GiaTienToiThieu` double NOT NULL,
   `PhanTram` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -209,7 +217,7 @@ CREATE TABLE `khuyenmai` (
 --
 
 INSERT INTO `khuyenmai` (`MaKM`, `TenCT`, `NgayBD`, `NgayKT`, `GiaTienToiThieu`, `PhanTram`) VALUES
-('HFMLH879612', 'Khai trương', '14/06/2020', '15/06/2020', 0, 50);
+('HFMLH879612', 'Khai trương', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 50);
 
 -- --------------------------------------------------------
 
@@ -265,7 +273,8 @@ CREATE TABLE `nhanvien` (
 --
 
 INSERT INTO `nhanvien` (`MaNV`, `HoTen`, `NgaySinh`, `GioiTinh`, `DiaChi`, `SoDienThoai`, `Email`) VALUES
-('nv1', 'hello', '2020-11-18 11:54:42', 0, NULL, NULL, NULL);
+('nv1', 'hello', '2020-11-18 11:54:42', 0, NULL, NULL, NULL),
+('nv2', 'world', '2020-01-15 15:56:43', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -336,6 +345,13 @@ CREATE TABLE `sanpham` (
   `MaNCC` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `TrangThai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `sanpham`
+--
+
+INSERT INTO `sanpham` (`MaSP`, `TenSP`, `AnhSP`, `MaLoai`, `TenLoaiSP`, `SoLuong`, `DonViTinh`, `GiaNhap`, `GiaBan`, `MaNCC`, `TrangThai`) VALUES
+('1', 'kẹo', NULL, 'DD', 'snack', 0, '', 0, 0, 'VN0001', 1);
 
 -- --------------------------------------------------------
 
@@ -416,7 +432,6 @@ ALTER TABLE `ctpx`
 --
 ALTER TABLE `doanhsokhachhang`
   ADD PRIMARY KEY (`MaDS`),
-  ADD UNIQUE KEY `Nam` (`Nam`),
   ADD KEY `fk_dskh` (`MaKH`);
 
 --
@@ -424,7 +439,6 @@ ALTER TABLE `doanhsokhachhang`
 --
 ALTER TABLE `doanhsonhanvien`
   ADD PRIMARY KEY (`MaDS`),
-  ADD UNIQUE KEY `Nam` (`Nam`),
   ADD KEY `fk1_dsnv` (`MaNV`);
 
 --
