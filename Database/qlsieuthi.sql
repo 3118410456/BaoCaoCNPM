@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 21, 2020 lúc 05:33 AM
+-- Thời gian đã tạo: Th10 21, 2020 lúc 08:02 AM
 -- Phiên bản máy phục vụ: 10.4.14-MariaDB
 -- Phiên bản PHP: 7.2.34
 
@@ -45,7 +45,8 @@ CREATE TABLE `ca` (
 CREATE TABLE `chucvu` (
   `MaCV` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `TenChucVu` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `SoLuong` int(11) NOT NULL
+  `SoLuong` int(11) NOT NULL,
+  `Luong` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -165,18 +166,6 @@ INSERT INTO `khuyenmai` (`MaKM`, `TenCT`, `NgayBD`, `NgayKT`, `GiaTienToiThieu`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `luong`
---
-
-CREATE TABLE `luong` (
-  `MaLuong` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `MaCV` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `SoTien` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Cấu trúc bảng cho bảng `nhacungcap`
 --
 
@@ -206,7 +195,7 @@ CREATE TABLE `nhanvien` (
   `DiaChi` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `SoDienThoai` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Email` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `MaLuong` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `MaCV` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -431,13 +420,6 @@ ALTER TABLE `khuyenmai`
   ADD PRIMARY KEY (`MaKM`);
 
 --
--- Chỉ mục cho bảng `luong`
---
-ALTER TABLE `luong`
-  ADD PRIMARY KEY (`MaLuong`),
-  ADD KEY `fk_luong` (`MaCV`);
-
---
 -- Chỉ mục cho bảng `nhacungcap`
 --
 ALTER TABLE `nhacungcap`
@@ -448,7 +430,7 @@ ALTER TABLE `nhacungcap`
 --
 ALTER TABLE `nhanvien`
   ADD PRIMARY KEY (`MaNV`),
-  ADD KEY `fk1_nhanvien` (`MaLuong`);
+  ADD KEY `fk1_nhanvien` (`MaCV`);
 
 --
 -- Chỉ mục cho bảng `phancongca`
@@ -557,16 +539,10 @@ ALTER TABLE `hoadon`
   ADD CONSTRAINT `fk3_hd` FOREIGN KEY (`MaKM`) REFERENCES `khuyenmai` (`MaKM`);
 
 --
--- Các ràng buộc cho bảng `luong`
---
-ALTER TABLE `luong`
-  ADD CONSTRAINT `fk_luong` FOREIGN KEY (`MaCV`) REFERENCES `chucvu` (`MaCV`);
-
---
 -- Các ràng buộc cho bảng `nhanvien`
 --
 ALTER TABLE `nhanvien`
-  ADD CONSTRAINT `fk1_nhanvien` FOREIGN KEY (`MaLuong`) REFERENCES `luong` (`MaLuong`);
+  ADD CONSTRAINT `fk1_nhanvien` FOREIGN KEY (`MaCV`) REFERENCES `chucvu` (`MaCV`);
 
 --
 -- Các ràng buộc cho bảng `phancongca`
