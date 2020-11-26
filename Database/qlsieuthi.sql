@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 21, 2020 lúc 08:02 AM
+-- Thời gian đã tạo: Th10 26, 2020 lúc 10:20 AM
 -- Phiên bản máy phục vụ: 10.4.14-MariaDB
 -- Phiên bản PHP: 7.2.34
 
@@ -138,7 +138,8 @@ INSERT INTO `khachhang` (`MaKH`, `HoTen`, `SDT`) VALUES
 
 CREATE TABLE `kho` (
   `MaKho` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `TenKho` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `TenKho` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `DiaChi` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -241,7 +242,8 @@ CREATE TABLE `phieunhap` (
   `NgayNhap` timestamp NOT NULL DEFAULT current_timestamp(),
   `TongSoLuong` int(11) NOT NULL,
   `TongTien` double NOT NULL,
-  `GhiChu` text COLLATE utf8_unicode_ci DEFAULT NULL
+  `GhiChu` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `TrangThai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -256,7 +258,8 @@ CREATE TABLE `phieuxuat` (
   `MaNV` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `NgayXuat` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `TongSoLuong` int(11) NOT NULL,
-  `TongTien` double NOT NULL
+  `TongTien` double NOT NULL,
+  `TrangThai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
