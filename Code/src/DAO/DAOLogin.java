@@ -34,7 +34,7 @@ public class DAOLogin {
 //        try {
 //            //Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 //            conn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QuanLySieuThi;"
-//                    + "user=tuan;password=Kames551689");
+//                    + "user=truong;password=123456");
 //            System.out.println("Connected");
 //        } catch (Exception e) {
 //            e.printStackTrace();
@@ -43,7 +43,7 @@ public class DAOLogin {
          try {  
         Class.forName("com.mysql.jdbc.Driver");
         try {
-            conn=(com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/quanlysieuthi","admin","admin");
+            conn=(com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/qlsieuthi","root","");
             System.out.println("OK");
         } catch (SQLException ex) {
          
@@ -56,7 +56,7 @@ public class DAOLogin {
     
    public int ktraTaiKhoan(NGUOIDUNG tt)
    {
-       String sql = "SELECT * FROM NGUOIDUNG WHERE username='"+tt.getUser()+"'";
+       String sql = "SELECT * FROM taikhoan WHERE username='"+tt.getUser()+"'";
        try{
           sm = conn.createStatement();
           rs = sm.executeQuery(sql);

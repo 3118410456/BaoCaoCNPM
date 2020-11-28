@@ -10,27 +10,28 @@ package DTO;
  * @author MINH TUAN
  */
 public class HOADON {
-    String mahd,manv,ngayxuat,makm,makh;
-
-    public String getMakh() {
+    String mahd,manv,ngaytao,makm,makh;
+    
+    public String getMaKH() {
         return makh;
     }
 
-    public void setMakh(String makh) {
+    public void setMaKH(String makh) {
         this.makh = makh;
     }
     
-    Double tongtien,thongke;
+    Double tongcong,tongtientra,thongke;
+    int phantramkm;
 
     public Double getThongke() {
         return thongke;
     }
 
-    public String getMakm() {
+    public String getMaKM() {
         return makm;
     }
 
-    public void setMakm(String makm) {
+    public void setMaKM(String makm) {
         this.makm = makm;
     }
 
@@ -42,36 +43,52 @@ public class HOADON {
 
    
 
-    public String getMahd() {
+    public String getMaHD() {
         return mahd;
     }
 
-    public void setMahd(String mahd) {
+    public void setMaHD(String mahd) {
         this.mahd = mahd;
     }
 
-    public String getManv() {
+    public String getMaNV() {
         return manv;
     }
 
-    public void setManv(String manv) {
+    public void setMaNV(String manv) {
         this.manv = manv;
     }
 
-    public String getNgayxuat() {
-        return ngayxuat;
+    public String getNgayTao() {
+        return ngaytao;
     }
 
-    public void setNgayxuat(String ngayxuat) {
-        this.ngayxuat = ngayxuat;
+    public void setNgayTao(String ngaytao) {
+        this.ngaytao = ngaytao;
     }
 
-    public Double getTongtien() {
-        return tongtien;
+    public Double getTongCong() {
+        return tongcong;
     }
 
-    public void setTongtien(Double tongtien) {
-        this.tongtien = tongtien;
+    public void setTongCong(Double tongcong) {
+        this.tongcong = tongcong;
+    }
+    
+    public Double getTongTienTra() {
+        return tongtientra;
+    }
+
+    public void setTongTienTra(Double tongtientra) {
+        this.tongtientra = tongtientra;
+    }
+    
+    public int getPhanTramKM() {
+        return phantramkm;
+    }
+
+    public void setPhanTramKM(int phantramkm) {
+        this.phantramkm = phantramkm;
     }
     
 }

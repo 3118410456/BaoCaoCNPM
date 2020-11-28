@@ -10,7 +10,23 @@ package DTO;
  * @author Admin
  */
 public class PHIEUNHAP {
-    String MaPN ,NgayNhap,MaNV;
+    String MaPN ,NgayNhap,MaNV,MaKho,MaNCC;
+
+    public String getMaKho() {
+        return MaKho;
+    }
+
+    public void setMaKho(String MaKho) {
+        this.MaKho = MaKho;
+    }
+
+    public String getMaNCC() {
+        return MaNCC;
+    }
+
+    public void setMaNCC(String MaNCC) {
+        this.MaNCC = MaNCC;
+    }
     double TongTien;
 
     public String getMaPN() {

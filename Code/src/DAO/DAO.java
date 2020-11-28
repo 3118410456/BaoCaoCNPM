@@ -52,7 +52,7 @@ public class DAO {
 //       try {
 //            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 //            conn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QuanLySieuThi;"
-//                    + "username=tuan;password=Kames551689");
+//                    + "username=truong;password=123456");
 //            
 //            
 //        } catch (Exception e) {
@@ -62,7 +62,7 @@ public class DAO {
          try {  
         Class.forName("com.mysql.jdbc.Driver");
         try {
-            conn=(com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/quanlysieuthi","admin","admin");
+            conn=(com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/qlsieuthi","root","");
             System.out.println("OK");
         } catch (SQLException ex) {
            

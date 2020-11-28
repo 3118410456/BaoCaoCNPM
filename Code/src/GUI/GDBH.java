@@ -266,7 +266,7 @@ public class GDBH extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DoAn/plus.png"))); // NOI18N
-        jLabel2.setText("Tạo hóa đơn");
+        jLabel2.setText("Lưu hóa đơn");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.setOpaque(true);
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -548,7 +548,7 @@ public class GDBH extends javax.swing.JFrame {
             {
                 if(ak.getTenSP().equals(ten))
                 {
-                    mua = JOptionPane.showInputDialog(rootPane,"Tên sản phẩm : "+ak.getTenSP()+"\nĐơn giá : "+GIAODIENCHINH.vnmoney.format(ak.getDonGia())+"\nNhập số lượng mua, có sẵn : "+ ak.getSoLuong(),"Thêm vào hóa đơn",JOptionPane.INFORMATION_MESSAGE);
+                    mua = JOptionPane.showInputDialog(rootPane,"Tên sản phẩm : "+ak.getTenSP()+"\nĐơn giá : "+GIAODIENCHINH.vnmoney.format(ak.getGiaBan())+"\nNhập số lượng mua, có sẵn : "+ ak.getSoLuong(),"Thêm vào hóa đơn",JOptionPane.INFORMATION_MESSAGE);
                    
                     giohang = new BUS_TINHTOAN().tongsp(ak.getMaSP());
                     break;

@@ -26,27 +26,27 @@ public class CTHD {
         this.soluong = soluong;
     }
 
-    public String getMahd() {
+    public String getMaHD() {
         return mahd;
     }
 
-    public void setMahd(String mahd) {
+    public void setMaHD(String mahd) {
         this.mahd = mahd;
     }
 
-    public String getMasp() {
+    public String getMaSP() {
         return masp;
     }
 
-    public void setMasp(String masp) {
+    public void setMaSP(String masp) {
         this.masp = masp;
     }
 
-    public String getTensp() {
+    public String getTenSP() {
         return tensp;
     }
 
-    public void setTensp(String tensp) {
+    public void setTenSP(String tensp) {
         this.tensp = tensp;
     }
 
@@ -58,32 +58,32 @@ public class CTHD {
         this.dongia = dongia;
     }
 
-    public Double getThanhtien() {
+    public Double getThanhTien() {
         return thanhtien;
     }
 
-    public void setThanhtien(Double thanhtien) {
+    public void setThanhTien(Double thanhtien) {
         this.thanhtien = thanhtien;
     }
 
-    public int getSoluong() {
+    public int getSoLuong() {
         return soluong;
     }
 
-    public void setSoluong(int soluong) {
+    public void setSoLuong(int soluong) {
         this.soluong = soluong;
     }
-    public static void main(String[] args) {
-        ArrayList<String> l = new ArrayList<>();
-        l.add(("number"));
-        l.add("new");
-        l.add("gray");
-        for(String a : l)
-        {
-            System.out.println(a);
-        }
-        System.out.println("after remove 2");
-        l.remove(2);
-        System.out.println("0 is " + l.get(2));
-    }
+//    public static void main(String[] args) {
+//        ArrayList<String> l = new ArrayList<>();
+//        l.add(("number"));
+//        l.add("new");
+//        l.add("gray");
+//        for(String a : l)
+//        {
+//            System.out.println(a);
+//        }
+//        System.out.println("after remove 2");
+//        l.remove(2);
+//        System.out.println("0 is " + l.get(2));
+//    }
 }

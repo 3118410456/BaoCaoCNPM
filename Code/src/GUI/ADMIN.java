@@ -104,25 +104,25 @@ public class ADMIN extends javax.swing.JFrame {
         list = new LOADDULIEU().getList();
         for(SANPHAM s : list)
         {
-            modelqlsp.addRow(new Object[]{s.getMaSP(),s.getTenSP(),s.getMaLoai(),s.getSoLuong(),s.getDonViTinh(),vnmoney.format(s.getDonGia()),s.getMaNCC()});
+            modelqlsp.addRow(new Object[]{s.getMaSP(),s.getTenSP(),s.getMaLoai(),s.getSoLuong(),s.getDonViTinh(),vnmoney.format(s.getGiaBan()),s.getMaNCC()});
         }
        
         
         
-        modeldshd = (DefaultTableModel) tbldshd.getModel();
-        modeldshd.setRowCount(0);
-        listhd = new LOADDULIEU().getListHD();
-        for(HOADON h : listhd)
-        {
-            try {
-              
-             modeldshd.addRow(new Object[]{h.getMahd(),h.getManv(),sdf2.format(sdf1.parse(String.valueOf(h.getNgayxuat()))),vnmoney.format(h.getTongtien()),h.getMakm(),h.getMakh()});
-             
-             
-            } catch (ParseException ex) {
-                Logger.getLogger(GIAODIENCHINH.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+//        modeldshd = (DefaultTableModel) tbldshd.getModel();
+//        modeldshd.setRowCount(0);
+//        listhd = new LOADDULIEU().getListHD();
+//        for(HOADON h : listhd)
+//        {
+//            try {
+//              
+//             modeldshd.addRow(new Object[]{h.getMahd(),h.getManv(),sdf2.format(sdf1.parse(String.valueOf(h.getNgayxuat()))),vnmoney.format(h.getTongtien()),h.getMakm(),h.getMakh()});
+//             
+//             
+//            } catch (ParseException ex) {
+//                Logger.getLogger(GIAODIENCHINH.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
         
         modeldsnv = (DefaultTableModel) tbldsnv.getModel();
         LocListNV();

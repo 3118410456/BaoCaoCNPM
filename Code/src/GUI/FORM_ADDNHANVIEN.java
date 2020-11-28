@@ -1,52 +1,95 @@
 
 package GUI;
 
-import BUS.BUS_SUA;
-import BUS.LOADDULIEU;
 import DAO.KiemTraLoi;
+import BUS.BUS_THEM;
+import BUS.LOADDULIEU;
+import DTO.CHUCVU;
 import DTO.SANPHAM;
 import DTO.NHACUNGCAP;
 import DTO.MALOAI;
+import DTO.NHANVIEN;
 import static GUI.GIAODIENCHINH.list;
-import static GUI.GIAODIENCHINH.listhd;
-import static GUI.GIAODIENCHINH.modeldshd;
 import static GUI.GIAODIENCHINH.modelqlsp;
-import static GUI.GIAODIENCHINH.tblqlsp;
-import static GUI.FORM_THEM.listncc;
+import static GUI.GIAODIENCHINH.vnmoney;
 import java.awt.Color;
-import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Locale;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-public class FORM_SUA extends javax.swing.JFrame {
-    public static DefaultComboBoxModel boxncc,boxml;
-    public static ArrayList<NHACUNGCAP> listncc = new ArrayList<>();
-    public static ArrayList<MALOAI> listml = new ArrayList<>();
-    public FORM_SUA() {
+public class FORM_ADDNHANVIEN extends javax.swing.JFrame {
+    DefaultComboBoxModel boxchucvu,boxgioitinh;
+    public static ArrayList<CHUCVU> listchucvu = new ArrayList<>();
+    public static ArrayList<NHANVIEN> listnhanvien = new ArrayList<>();
+    public FORM_ADDNHANVIEN() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-       boxncc = (DefaultComboBoxModel) comboncc.getModel();
-        listncc = new LOADDULIEU().getListNCC();
-        for(NHACUNGCAP ncc : listncc)
+        boxchucvu = (DefaultComboBoxModel) combochucvu.getModel();
+        listchucvu = new LOADDULIEU().getListChucVu();
+        for(CHUCVU cv : listchucvu)
         {
-            boxncc.addElement(ncc.getMaNSX() + "  " + ncc.getTenNSX());
+            boxchucvu.addElement(cv.getMaCV() + "  " + cv.getTenCV());
+        }
+        
+       boxgioitinh = (DefaultComboBoxModel) combogioitinh.getModel();
+        listnhanvien = new LOADDULIEU().getListNhanVien();
+        for(NHANVIEN nv : listnhanvien)
+        {
+            if(nv.getGioiTinh().equalsIgnoreCase("0"));
+        }
+//       txttensp.setCaretColor(Color.WHITE);
+//        txtmasp.setCaretColor(Color.WHITE);
+//        txtdvt.setCaretColor(Color.WHITE);
+//        txtgiaban.setCaretColor(Color.WHITE);
+//        txtgianhap.setCaretColor(Color.WHITE);
+//        txtsoluong.setCaretColor(Color.WHITE);
+    }
+    public static String tachtrai(String a)
+    {
+        String n = "";
+        int dem = 0;
+        for(int i=0;i<a.length();i++)
+        {
+           if(a.charAt(i)!=' ')
+           {
+               n+=a.charAt(i);
+           }
+           else
+           {
+               dem=1;
+               break;
+               
+           }
+        }
+        if(dem == 1)
+        {
+            return n;
+        }
+        else
+        {
+            return " ";
+        }
+    }
+    public static String tachphai(String a)
+    {
+        String n = "";
+        int dem = 0;
+        int j=0;
+        for(int i=0;i<a.length();i++)
+        {
+           if(a.charAt(i)==' ')
+           {
+             j = i+1;
+             break;
+           }
            
         }
-       boxml = (DefaultComboBoxModel) combomaloai.getModel();
-        listml = new LOADDULIEU().getListMaLoai();
-        for(MALOAI ml : listml)
+        for(int z=j;z<a.length();z++)
         {
-            boxml.addElement(ml.getMaloai() + "  " + ml.getTenloai());
+            n+=a.charAt(z);
         }
-        txttensp.setCaretColor(Color.WHITE);
-        txtmasp.setCaretColor(Color.WHITE);
-        txtdvt.setCaretColor(Color.WHITE);
-        txtgiaban.setCaretColor(Color.WHITE);
-        txtsoluong.setCaretColor(Color.WHITE);
+        return n;
     }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,19 +110,18 @@ public class FORM_SUA extends javax.swing.JFrame {
         txtgiaban = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        comboncc = new javax.swing.JComboBox<>();
+        combogioitinh = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        combomaloai = new javax.swing.JComboBox<>();
+        combochucvu = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        txtgianhap = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(47, 48, 48));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.setPreferredSize(new java.awt.Dimension(386, 709));
         jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jPanel1MouseDragged(evt);
@@ -92,7 +134,7 @@ public class FORM_SUA extends javax.swing.JFrame {
         });
 
         jPanel2.setBackground(new java.awt.Color(61, 145, 106));
-        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -129,11 +171,11 @@ public class FORM_SUA extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(56, 56, 56)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,29 +188,39 @@ public class FORM_SUA extends javax.swing.JFrame {
         );
 
         txttensp.setForeground(new java.awt.Color(255, 255, 255));
-        txttensp.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tên sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
+        txttensp.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tên nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
         txttensp.setOpaque(false);
 
         txtmasp.setForeground(new java.awt.Color(255, 255, 255));
-        txtmasp.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mã sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
+        txtmasp.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mã nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
         txtmasp.setOpaque(false);
+        txtmasp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtmaspActionPerformed(evt);
+            }
+        });
 
         txtdvt.setForeground(new java.awt.Color(255, 255, 255));
-        txtdvt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Đơn vị tính", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
+        txtdvt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Địa chỉ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
         txtdvt.setOpaque(false);
 
         txtsoluong.setForeground(new java.awt.Color(255, 255, 255));
-        txtsoluong.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Số lượng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
+        txtsoluong.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SĐT", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
         txtsoluong.setOpaque(false);
 
         txtgiaban.setForeground(new java.awt.Color(255, 255, 255));
-        txtgiaban.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Đơn giá bán", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
+        txtgiaban.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Email", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
         txtgiaban.setOpaque(false);
+        txtgiaban.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtgiabanActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("SỬA SẢN PHẨM");
+        jLabel3.setText("THÊM NHÂN VIÊN");
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DoAn/random.png"))); // NOI18N
         jLabel4.setToolTipText("tạo mã ngẫu nhiên");
@@ -179,19 +231,19 @@ public class FORM_SUA extends javax.swing.JFrame {
             }
         });
 
-        comboncc.setMaximumRowCount(40);
+        combogioitinh.setMaximumRowCount(40);
+        combogioitinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Nhà sản xuất");
+        jLabel5.setText("Chức vụ");
 
-        combomaloai.setMaximumRowCount(40);
+        combochucvu.setMaximumRowCount(40);
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Mã loại");
+        jLabel6.setText("Giới tính");
 
-        txtgianhap.setForeground(new java.awt.Color(255, 255, 255));
-        txtgianhap.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Đơn giá nhập", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
-        txtgianhap.setOpaque(false);
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Ngày sinh");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -199,58 +251,67 @@ public class FORM_SUA extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(59, 59, 59)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtgianhap, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(combomaloai, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comboncc, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtmasp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(combochucvu, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtmasp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
                             .addComponent(txttensp, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtsoluong, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtdvt, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtgiaban, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(combogioitinh, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4))
-                    .addComponent(jLabel5))
+                        .addComponent(jLabel4)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtmasp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
+                        .addGap(104, 104, 104)
                         .addComponent(jLabel4)))
                 .addGap(21, 21, 21)
                 .addComponent(txttensp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addGap(10, 10, 10)
-                .addComponent(combomaloai, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addComponent(combogioitinh, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(txtsoluong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
+                .addGap(18, 18, 18)
                 .addComponent(txtdvt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
+                .addGap(26, 26, 26)
                 .addComponent(txtgiaban, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(txtgianhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(comboncc, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(8, 8, 8)
+                .addComponent(combochucvu, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        txtgiaban.getAccessibleContext().setAccessibleName("Giá Bán");
+        combogioitinh.getAccessibleContext().setAccessibleName("");
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -262,101 +323,115 @@ public class FORM_SUA extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseClicked
     
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+     
        
-       
+      
        
     }//GEN-LAST:event_jLabel2MouseClicked
-    int mx,my;
+int mx,my;
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+        mx=evt.getX();
+       my=evt.getY();
+    }//GEN-LAST:event_jPanel1MousePressed
+
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         this.setLocation(x-mx,y-my);
     }//GEN-LAST:event_jPanel1MouseDragged
 
-    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
-       mx=evt.getX();
-       my=evt.getY();
-    }//GEN-LAST:event_jPanel1MousePressed
-
     private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
          this.dispose();
     }//GEN-LAST:event_jLabel1MousePressed
-    int dongcansua;
-    String macansua;
+
     private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
-      NumberFormat vnmoney = NumberFormat.getInstance(new Locale("vi", "vn"));
        boolean check = false;
        KiemTraLoi ck = new KiemTraLoi();
        if(txtmasp.getText().isEmpty()==false&&txtdvt.getText().isEmpty()==false&&txttensp.getText().isEmpty()==false)
        {
-           if(ck.KT_SoLuong(txtsoluong.getText())&&ck.KT_SoLuong(txtgiaban.getText()))
+           if(ck.KT_SoLuong(txtsoluong.getText())&&ck.KT_SoLuong(txtgiaban.getText())&&ck.KT_SoLuong(txtgianhap.getText()))
            {
-               if(Integer.parseInt(txtsoluong.getText())>0&&Double.parseDouble(txtgiaban.getText())>0)
+               if(Integer.parseInt(txtsoluong.getText())>0 && Double.parseDouble(txtgiaban.getText())>0 && Double.parseDouble(txtgianhap.getText())>0)
                {
                    check=true;
                }
                else
                {
-                   JOptionPane.showMessageDialog(rootPane, "Hãy nhập số luọng hoặc đơn giá hợp lệ");
+                   JOptionPane.showMessageDialog(rootPane, "Hãy nhập số lượng hoặc đơn giá bán hoặc đơn giá nhập hợp lệ");
                }
            }
            else
            {
-               JOptionPane.showMessageDialog(rootPane, "Hãy nhập số luọng hoặc đơn giá hợp lệ");
+               JOptionPane.showMessageDialog(rootPane, "Hãy nhập số lượng hoặc đơn giá bán hoặc đơn giá nhập hợp lệ");
            }
        }
        else
        {
            JOptionPane.showMessageDialog(rootPane, "Hãy nhập đầy đủ thông tin");
-       } 
-      
-      
-      
-      
-      if(check==true)
-      {
-      String MaSP = txtmasp.getText() ;
-       String TenSP =  String.valueOf(txttensp.getText());
-       String MaLoai = FORM_THEM.tachtrai(String.valueOf(combomaloai.getSelectedItem()));
-       String SoLuong = txtsoluong.getText();
-       String DonViTinh = txtdvt.getText();
-       String TenNhaSX = FORM_THEM.tachtrai(String.valueOf(comboncc.getSelectedItem()));
-       Double DonGia = Double.parseDouble(String.valueOf(txtgiaban.getText()));
-       
-       
-       
-       int k=JOptionPane.showConfirmDialog(rootPane, "Bạn có chắc chắn muốn sửa ?");
-       if(new BUS_SUA().suaSP(GIAODIENCHINH.list.get(dongcansua).getMaSP(), MaSP, TenSP, MaLoai, Integer.parseInt(SoLuong), DonViTinh, DonGia, TenNhaSX)&&k==0)
+       }
+       if(check==true)
        {
-           
-           
-          
-          
-           /*giaodien.modelqlsp.setValueAt(MaSP, dongcansua, 0);
-           giaodien.modelqlsp.setValueAt(TenSP, dongcansua, 1);
-           giaodien.modelqlsp.setValueAt(MaLoai, dongcansua, 2);
-           giaodien.modelqlsp.setValueAt(SoLuong, dongcansua, 3);
-           giaodien.modelqlsp.setValueAt(DonViTinh, dongcansua, 4);
-           giaodien.modelqlsp.setValueAt(DonGia, dongcansua, 5);
-           giaodien.modelqlsp.setValueAt(TenNhaSX, dongcansua, 6);*/
-        
-        
-         GIAODIENCHINH.LocAll();
+       SANPHAM s = new SANPHAM();
+ 
+       String MaSP = txtmasp.getText() ;
+       String TenSP = txttensp.getText();
+      
+       int SoLuong = Integer.parseInt(txtsoluong.getText());
+       String DonViTinh = txtdvt.getText();
+       double GiaBan = Double.parseDouble(txtgiaban.getText());
+       double GiaNhap = Double.parseDouble(txtgianhap.getText());
+      
+       
+       s.setMaSP(MaSP);
+       s.setTenSP(TenSP);
+       s.setMaLoai(tachtrai(String.valueOf(combochucvu.getSelectedItem())));
+       s.setSoLuong(SoLuong);
+       s.setDonViTinh(DonViTinh);
+       s.setGiaBan(GiaBan);
+       s.setGiaNhap(GiaNhap);
+       s.setMaNCC(tachtrai(String.valueOf(combogioitinh.getSelectedItem())));
+       
+       
+       
+       
+        if(new BUS_THEM().themSP(s))
+       {
+           JOptionPane.showMessageDialog(this, "Đã thêm sản phẩm");
+           GIAODIENCHINH.modelqlsp.setRowCount(0);
+           GIAODIENCHINH.list =new LOADDULIEU().getList();
+            for(SANPHAM ss : GIAODIENCHINH.list)
+        {
+            modelqlsp.addRow(new Object[]{ss.getMaSP(),ss.getTenSP(),ss.getMaLoai(),ss.getSoLuong(),ss.getDonViTinh(),vnmoney.format(ss.getGiaBan()),vnmoney.format(ss.getGiaNhap()),ss.getMaNCC()});
+        }
+            GIAODIENCHINH.LocAll();
+            GIAODIENCHINH.LocListHD();
            this.dispose();
        }
-       else if(new BUS_SUA().suaSP(GIAODIENCHINH.list.get(dongcansua).getMaSP(), MaSP, TenSP, MaLoai, Integer.parseInt(SoLuong), DonViTinh, DonGia, TenNhaSX)==false)
+       else
        {
-           JOptionPane.showMessageDialog(rootPane, "Sửa thất bại");
+           JOptionPane.showMessageDialog(this, "Thêm thất bại,vui lòng kiểm tra lại thông tin nhập !");
        }
-      }
+       }
+       else
+       {
+           
+       }
     }//GEN-LAST:event_jLabel2MousePressed
 
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
         String a = GIAODIENCHINH.taochuoi(2);
-        int b = (int) (Math.random() * ((99999 - 10000) + 1)) + 10000;
+         int b = (int) (Math.random() * ((99999 - 10000) + 1)) + 10000;
         String c = String.valueOf(b);
         txtmasp.setText(a+c);
     }//GEN-LAST:event_jLabel4MousePressed
+
+    private void txtgiabanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtgiabanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtgiabanActionPerformed
+
+    private void txtmaspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmaspActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtmaspActionPerformed
 
     /**
      * @param args the command line arguments
@@ -375,39 +450,46 @@ public class FORM_SUA extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FORM_THEM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FORM_ADDNHANVIEN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FORM_THEM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FORM_ADDNHANVIEN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FORM_THEM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FORM_ADDNHANVIEN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FORM_THEM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FORM_ADDNHANVIEN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FORM_SUA().setVisible(true);
+                new FORM_ADDNHANVIEN().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JComboBox<String> combomaloai;
-    public static javax.swing.JComboBox<String> comboncc;
+    private javax.swing.JComboBox<String> combochucvu;
+    private javax.swing.JComboBox<String> combogioitinh;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     public javax.swing.JTextField txtdvt;
     public javax.swing.JTextField txtgiaban;
-    public javax.swing.JTextField txtgianhap;
     public javax.swing.JTextField txtmasp;
     public javax.swing.JTextField txtsoluong;
     public javax.swing.JTextField txttensp;

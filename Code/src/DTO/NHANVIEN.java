@@ -11,16 +11,19 @@ package DTO;
  * @author Admin
  */
 public class NHANVIEN {
-    String MaNV ,HoTen,GioiTinh ,NgaySinh ,DiaChi , SDT , Email ;
+    String MaNV ,HoTen,GioiTinh ,NgaySinh ,DiaChi , SDT , Email ,TenChucVu ;
 
-    public NHANVIEN(String MaNV, String HoTen,String GioiTinh, String NgaySinh, String SDT, String DiaChi, String Email) {
+    public NHANVIEN(String MaNV, String HoTen,String GioiTinh, String NgaySinh, String SDT, String DiaChi, String Email ,String TenChucVu) {
         this.MaNV = MaNV;
         this.HoTen = HoTen;
         this.NgaySinh = NgaySinh;
         this.SDT = SDT;
         this.DiaChi = DiaChi;
         this.Email = Email;
+        this.TenChucVu = TenChucVu;
     }
+
+    
     
     public NHANVIEN()   {
         
@@ -80,6 +83,14 @@ public class NHANVIEN {
 
     public void setGioiTinh(String GioiTinh) {
         this.GioiTinh = GioiTinh;
+    }
+
+    public String getTenChucVu() {
+        return TenChucVu;
+    }
+
+    public void setTenChucVu(String TenChucVu) {
+        this.TenChucVu = TenChucVu;
     }
     
     

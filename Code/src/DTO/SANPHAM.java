@@ -9,7 +9,7 @@ package DTO;
 public class SANPHAM {
     String MaSP, TenSP, MaLoai, DonViTinh, MaNCC;
     int SoLuong;
-    double DonGia;
+    double GiaBan, GiaNhap;
 
     
     
@@ -63,12 +63,20 @@ public class SANPHAM {
         this.SoLuong = SoLuong;
     }
 
-    public double getDonGia() {
-        return DonGia;
+    public double getGiaBan() {
+        return GiaBan;
     }
 
-    public void setDonGia(double DonGia) {
-        this.DonGia = DonGia;
+    public void setGiaBan(double GiaBan) {
+        this.GiaBan = GiaBan;
+    }
+    
+    public double getGiaNhap() {
+        return GiaNhap;
+    }
+
+    public void setGiaNhap(double GiaNhap) {
+        this.GiaNhap = GiaNhap;
     }
     
 }

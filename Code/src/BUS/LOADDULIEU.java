@@ -6,6 +6,7 @@
 package BUS;
 
 import DAO.DAO;
+import DTO.CHUCVU;
 import DTO.CTHD;
 import DTO.CTPN;
 import DTO.HOADON;
@@ -37,9 +38,7 @@ public class LOADDULIEU {
     ResultSet rs=null;
     public ArrayList<SANPHAM> getList(){
         ArrayList<SANPHAM> list = new ArrayList<>();
-        String sql = "select masp,tensp,phanloai.TenLoai,soluong,donvitinh,DonGia,NHACUNGCAP.TenNCC\n" +
-"from sanpham,nhacungcap,phanloai\n" +
-"where sanpham.TenNhaSX = NHACUNGCAP.MaNCC and SANPHAM.MaLoai = PHANLOAI.MaLoai";
+        String sql = "select masp,tensp,phanloai.TenLoai,soluong,donvitinh,GiaBan,GiaNhap,NHACUNGCAP.TenNCC from sanpham,nhacungcap,phanloai where sanpham.MaNCC = NHACUNGCAP.MaNCC and SANPHAM.MaLoai = PHANLOAI.MaLoai";
         
         try{
             PreparedStatement ps = cn.conn.prepareStatement(sql);
@@ -52,7 +51,8 @@ public class LOADDULIEU {
                 sp.setMaLoai(rs.getString("TenLoai"));
                 sp.setSoLuong(rs.getInt("SoLuong"));
                 sp.setDonViTinh(rs.getString("DonViTinh"));
-                sp.setDonGia(rs.getDouble("DonGia"));
+                sp.setGiaBan(rs.getDouble("GiaBan"));
+                sp.setGiaNhap(rs.getDouble("GiaNhap"));
                 sp.setMaNCC(rs.getString("TenNCC"));
                 list.add(sp);
             }
@@ -64,7 +64,7 @@ public class LOADDULIEU {
     public ArrayList<KHUYENMAI> getListKhuyenMai()
    {
        ArrayList<KHUYENMAI> list = new ArrayList<>();
-       String sql = "SELECT * FROM KHUYENMAI";
+       String sql = "SELECT * FROM khuyenmai";
        try {
            PreparedStatement ps = cn.conn.prepareStatement(sql);
            ResultSet rs = ps.executeQuery();
@@ -88,7 +88,7 @@ public class LOADDULIEU {
     public ArrayList<TAIKHOAN> getListTaiKhoan()
     {
         ArrayList<TAIKHOAN> list = new ArrayList<>();
-        String sql = "SELECT * FROM NGUOIDUNG";
+        String sql = "SELECT * FROM taikhoan";
         
         try {
             PreparedStatement ps = cn.conn.prepareStatement(sql);
@@ -100,12 +100,12 @@ public class LOADDULIEU {
                 tk.setTaiKhoan(rs.getString("username"));
                 tk.setMatKhau(rs.getString("password"));
                 tk.setMaNV(rs.getString("MaNV").toUpperCase());
-                tk.setTrangThai(rs.getString("TinhTrang"));
+                tk.setTrangThai(rs.getString("TrangThai"));
                 
-                if(tk.getTaiKhoan().equalsIgnoreCase("admin") == false)
-                {
+//                if(tk.getTaiKhoan().equalsIgnoreCase("admin") == false)
+//                {
                 list.add(tk);
-                }
+//                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -115,7 +115,7 @@ public class LOADDULIEU {
     }
      public ArrayList<NGUOIDUNG> NguoiDung(String tk)
    {
-        String sql = "SELECT * FROM NGUOIDUNG WHERE username='"+tk+"'";
+        String sql = "SELECT * FROM taikhoan WHERE username='"+tk+"'";
         ArrayList<NGUOIDUNG> list = new ArrayList<>();
          try{
           ps = cn.conn.createStatement();
@@ -141,27 +141,26 @@ public class LOADDULIEU {
        return list;
    }
     
-     public ArrayList<NGUOIDUNG> getListNguoiDung()
+     public ArrayList<NHANVIEN> getListNhanVien()
    {
-        String sql = "SELECT * FROM NGUOIDUNG";
-        ArrayList<NGUOIDUNG> list = new ArrayList<>();
+        String sql = "SELECT nhanvien.MaNV,nhanvien.HoTen,nhanvien.GioiTinh,nhanvien.NgaySinh,nhanvien.SoDienThoai,nhanvien.DiaChi,nhanvien.Email,chucvu.TenChucVu FROM nhanvien,chucvu WHERE nhanvien.MaCV=chucvu.MaCV";
+        ArrayList<NHANVIEN> list = new ArrayList<>();
          try{
           ps = cn.conn.createStatement();
           rs = ps.executeQuery(sql);
           while(rs.next())
           {
-             NGUOIDUNG tt = new NGUOIDUNG();
-             tt.setUser(rs.getString("username"));
-             tt.setPass(rs.getString("password"));
-             tt.setManv(rs.getString("MaNV"));
-             tt.setHoten(rs.getString("HoTen"));
-             tt.setNgaysinh(rs.getString("NgaySinh"));
-             tt.setGioitinh(rs.getString("GioiTinh"));
-             tt.setDiachi(rs.getString("DiaChi"));
-             tt.setEmail(rs.getString("Email"));
-             tt.setSdt(rs.getString("SoDienThoai"));
-             tt.setTinhtrang(rs.getInt("TinhTrang"));
-             list.add(tt);
+             NHANVIEN nv = new NHANVIEN();
+             
+             nv.setMaNV(rs.getString("MaNV"));
+             nv.setHoTen(rs.getString("HoTen"));
+             nv.setNgaySinh(rs.getString("NgaySinh"));
+             nv.setGioiTinh(rs.getString("GioiTinh"));
+             nv.setDiaChi(rs.getString("DiaChi"));
+             nv.setEmail(rs.getString("Email"));
+             nv.setSDT(rs.getString("SoDienThoai"));
+             nv.setTenChucVu(rs.getString("TenChucVu"));
+             list.add(nv);
           }
           
        }catch(Exception e)
@@ -171,7 +170,7 @@ public class LOADDULIEU {
     
     public ArrayList<HOADON> getListHD(){
         ArrayList<HOADON> list = new ArrayList<>();
-        String sql = "SELECT * FROM HOADON order by CAST(NgayXuat AS date)";
+        String sql = "SELECT * FROM hoadon ";
         
         try{
             PreparedStatement ps = cn.conn.prepareStatement(sql);
@@ -179,13 +178,15 @@ public class LOADDULIEU {
             while(rs.next())
             {
                 HOADON h = new HOADON();
-                h.setMahd(rs.getString("MaHD"));
-                h.setManv(rs.getString("MaNV"));
-                h.setMakm(rs.getString("MaKM"));
-                h.setNgayxuat(rs.getString("NgayXuat"));
-                //Double tong = this.TongTien(rs.getString("MaHD"));
-                h.setTongtien(rs.getDouble("TongTien"));
-                h.setMakh(rs.getString("MaKH"));
+                h.setMaHD(rs.getString("MaHD"));
+                h.setMaNV(rs.getString("MaNV"));
+                h.setMaKH(rs.getString("MaKH"));
+                h.setMaKM(rs.getString("MaKM"));
+                h.setNgayTao(rs.getString("NgayTao"));
+                h.setTongCong(rs.getDouble("TongCong"));
+                h.setPhanTramKM(rs.getInt("PhanTramKM"));
+                h.setTongTienTra(rs.getDouble("TongTienTra"));
+                
                 list.add(h);
             }
         } catch (Exception e) {
@@ -195,8 +196,10 @@ public class LOADDULIEU {
     }
      public ArrayList<CTHD> getListCTHD(String mahd){
         ArrayList<CTHD> list = new ArrayList<>();
-        String sql = "select MaSP,TenSP,sum(SoLuong) as SoLuong,DonGia,sum(SoLuong)*DonGia as ThanhTien from CTHD where MaHD='"+mahd+"' \n" +
-"group by MaSP,TenSP,DonGia";
+//        String sql = "select MaSP,TenSP,sum(SoLuong) as SoLuong,DonGia,sum(SoLuong)*DonGia as ThanhTien from CTHD where MaHD='"+mahd+"' \n" +
+//"group by MaSP,TenSP,DonGia";
+
+          String sql = "select sanpham.TenSP,cthd.SoLuong,sanpham.GiaBan,(cthd.SoLuong*sanpham.GiaBan) as ThanhTien from cthd,sanpham where sanpham.MaSP = cthd.MaSP and cthd.MaHD='"+mahd+"'";
         
         try{
             PreparedStatement ps = cn.conn.prepareStatement(sql);
@@ -205,11 +208,11 @@ public class LOADDULIEU {
             {
                 
                 CTHD ch = new CTHD();
-                ch.setMasp(rs.getString("MaSP"));
-                ch.setTensp(rs.getString("TenSP"));
-                ch.setSoluong(rs.getInt("SoLuong"));
-                ch.setDongia(rs.getDouble("DonGia"));         
-                ch.setThanhtien(rs.getDouble("ThanhTien"));
+                ch.setTenSP(rs.getString("TenSP"));
+                //ch.setTenSP(rs.getString("TenSP"));
+                ch.setSoLuong(rs.getInt("SoLuong"));
+                ch.setDongia(rs.getDouble("GiaBan"));         
+                ch.setThanhTien(rs.getDouble("ThanhTien"));
                 list.add(ch);
             }
         } catch (Exception e) {
@@ -347,8 +350,10 @@ public class LOADDULIEU {
         while(rs.next())
         {
             PHIEUNHAP kh = new PHIEUNHAP();
-            kh.setMaNV(rs.getString("MaNV"));
             kh.setMaPN(rs.getString("MaPN"));
+            kh.setMaKho(rs.getString("MaKho"));
+            kh.setMaNV(rs.getString("MaNV"));
+            kh.setMaNCC(rs.getString("MaNCC"));
             kh.setNgayNhap(rs.getString("NgayNhap"));
             kh.setTongTien(rs.getDouble("TongTien"));
             
@@ -362,21 +367,23 @@ public class LOADDULIEU {
       public ArrayList<CTHD> TTGioHang()
     {
         ArrayList<CTHD> list = new ArrayList<>();
-        String sql="select sanpham.masp,sanpham.tensp,sum(giohang.soluong) as soluong,sanpham.DonGia,sum((giohang.soluong*sanpham.DonGia)) as thanhtien\n" +
-"from sanpham,giohang\n" +
-"where giohang.masp = sanpham.masp\n" +
-"group by sanpham.TenSP,sanpham.DonGia,sanpham.MaSP";
+//        String sql="select sanpham.masp,sanpham.tensp,sum(giohang.soluong) as soluong,sanpham.DonGia,sum((giohang.soluong*sanpham.DonGia)) as thanhtien\n" +
+//"from sanpham,giohang\n" +
+//"where giohang.masp = sanpham.masp\n" +
+//"group by sanpham.TenSP,sanpham.DonGia,sanpham.MaSP";
+
+        String sql ="select * from cthd , cthd  where hoadon.MaHD=cthd.MaHD";
         try {
             ps=cn.conn.createStatement();
             rs=ps.executeQuery(sql);
             while(rs.next())
             {
                 CTHD h = new CTHD();
-                h.setMasp(rs.getString("masp"));
-                h.setTensp(rs.getString("tensp"));
-                h.setSoluong(rs.getInt("soluong"));
-                h.setDongia(rs.getDouble("DonGia"));
-                h.setThanhtien(rs.getDouble("thanhtien"));
+                h.setMaSP(rs.getString("MaSP"));
+                //h.setTenSP(rs.getString("TenSP"));
+                h.setSoLuong(rs.getInt("SoLuong"));
+                //h.setDongia(rs.getDouble("DonGia"));
+                h.setThanhTien(rs.getDouble("GiaTien"));
                 list.add(h);
             }
         } catch (SQLException ex) {
@@ -405,10 +412,11 @@ public class LOADDULIEU {
       }
        public ArrayList<CTPN> getListCTPN()
     {
-        String sql = "select masp,sum(soluong) as soluong,gianhap,sum(thanhtien) as thanhtien\n" +
-"from ctpn\n" +
-"where MaPN is null\n" +
-"group by masp,gianhap";
+//        String sql = "select masp,sum(soluong) as soluong,gianhap,sum(thanhtien) as thanhtien\n" +
+//"from ctpn\n" +
+//"where MaPN is null\n" +
+//"group by masp,gianhap";
+        String sql = "select * from phieunhap , ctpn where phieunhap.MaPN = ctpn.MaPN";
         ArrayList<CTPN> list = new ArrayList<>();
         try {
             ps = cn.conn.createStatement();
@@ -417,9 +425,12 @@ public class LOADDULIEU {
         {
             CTPN kh = new CTPN();
             kh.setMaSP(rs.getString("masp"));
-            kh.setGiaNhap(rs.getDouble("gianhap"));
-            kh.setThanhTien(rs.getDouble("thanhtien"));
-            kh.setSoLuong(rs.getInt("soluong"));
+            kh.setTenSP(rs.getString("Tensp"));
+            kh.setTenLoaiSP(rs.getString("TenLoaiSP"));
+            //kh.setThanhTien(rs.getDouble("thanhtien"));
+            kh.setSoLuong(rs.getInt("SoLuong"));
+            kh.setDonViTinh(rs.getString("DonViTinh"));
+            kh.setGiaNhap(rs.getDouble("GiaNhap"));
             list.add(kh);
         }
         } catch (SQLException ex) {
@@ -484,4 +495,29 @@ public class LOADDULIEU {
        }
        return list;
    }
+       
+       
+       public ArrayList<CHUCVU> getListChucVu()
+       {
+           ArrayList<CHUCVU> list = new ArrayList<>();
+           String sql ="SELECT chucvu.MaCV , chucvu.TenChucVu , COUNT(nhanvien.MaCV) as Tong , chucvu.Luong from chucvu,nhanvien WHERE nhanvien.MaCV=chucvu.MaCV";
+           try {
+               PreparedStatement ps = cn.conn.prepareStatement(sql);
+               rs = ps.executeQuery();
+               
+               while(rs.next())
+        {
+            CHUCVU cv = new CHUCVU();
+            cv.setMaCV(rs.getString("MaCV"));
+            cv.setTenCV(rs.getString("TenChucVu"));
+            cv.setSoLuong(rs.getInt("Tong"));
+            cv.setLuong(rs.getDouble("Luong"));
+            list.add(cv);
+        }
+               
+           } catch (Exception e) {
+               e.printStackTrace();
+           }
+        return list;
+       }
 }

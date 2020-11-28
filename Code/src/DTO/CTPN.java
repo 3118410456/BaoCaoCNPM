@@ -10,7 +10,31 @@ package DTO;
  * @author Admin
  */
 public class CTPN {
-    String MaPN,MaSP;
+    String MaPN,MaSP,TenSP,TenLoaiSP,DonViTinh;
+
+    public String getTenSP() {
+        return TenSP;
+    }
+
+    public void setTenSP(String TenSP) {
+        this.TenSP = TenSP;
+    }
+
+    public String getTenLoaiSP() {
+        return TenLoaiSP;
+    }
+
+    public void setTenLoaiSP(String TenLoaiSP) {
+        this.TenLoaiSP = TenLoaiSP;
+    }
+
+    public String getDonViTinh() {
+        return DonViTinh;
+    }
+
+    public void setDonViTinh(String DonViTinh) {
+        this.DonViTinh = DonViTinh;
+    }
     int SoLuong;
     Double GiaNhap,ThanhTien;
     public CTPN(){}
