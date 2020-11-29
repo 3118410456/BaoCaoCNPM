@@ -10,7 +10,7 @@ public class NGUOIDUNG {
     String user;
     String pass;
     String manv;
-    String hoten,ngaysinh,gioitinh,diachi,sdt,email;
+    String hoten,ngaysinh,gioitinh,diachi,sdt,email,tenchucvu;
     int tinhtrang;
     public NGUOIDUNG(){}
 
@@ -94,6 +94,14 @@ public class NGUOIDUNG {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    public String getTenChucVu() {
+        return tenchucvu;
+    }
+
+    public void setTenChucVu(String tenchucvu) {
+        this.tenchucvu = tenchucvu;
     }
     
 }

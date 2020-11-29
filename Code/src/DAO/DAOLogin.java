@@ -62,11 +62,11 @@ public class DAOLogin {
           rs = sm.executeQuery(sql);
           while(rs.next())
           {
-              if(tt.getPass().equals(rs.getString("password"))&&Integer.parseInt(rs.getString("TinhTrang"))==1)
+              if(tt.getPass().equals(rs.getString("password"))&&Integer.parseInt(rs.getString("TrangThai"))==1)
               {
                   return 1;
               }
-              else if(tt.getPass().equals(rs.getString("password"))&&Integer.parseInt(rs.getString("TinhTrang"))==2)
+              else if(tt.getPass().equals(rs.getString("password"))&&Integer.parseInt(rs.getString("TrangThai"))==2)
               {
                   return 2;
               }

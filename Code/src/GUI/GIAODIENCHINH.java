@@ -139,22 +139,22 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
         
         
     }
-//    public void setThongTinCaNhan()
-//    {
-//        String userlogin = LOGIN.txtTaiKhoan.getText();
-//         ttdn = new LOADDULIEU().NguoiDung(userlogin);
-//        lbhello.setText("Xin chào : " + ttdn.get(0).getHoten());
-//        ttdnmanv.setText(ttdn.get(0).getManv());
-//        ttdnhoten.setText(ttdn.get(0).getHoten());
-//        try {
-//            ttdnngaysinh.setText(sdf2.format(sdf1.parse(String.valueOf(ttdn.get(0).getNgaysinh()))));
-//        } catch (ParseException ex) {
-//            Logger.getLogger(GIAODIENCHINH.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        ttdndiachi.setText(ttdn.get(0).getDiachi());
-//        ttdnemail.setText(ttdn.get(0).getEmail());
-//        ttdnsdt.setText(ttdn.get(0).getSdt());
-//    }
+    public void setThongTinCaNhan()
+    {
+        String userlogin = LOGIN.txtTaiKhoan.getText();
+         ttdn = new LOADDULIEU().NguoiDung(userlogin);
+        lbhello.setText("Xin chào : " + ttdn.get(0).getHoten());
+        ttdnmanv.setText(ttdn.get(0).getManv());
+        ttdnhoten.setText(ttdn.get(0).getHoten());
+        try {
+            ttdnngaysinh.setText(sdf2.format(sdf1.parse(String.valueOf(ttdn.get(0).getNgaysinh()))));
+        } catch (ParseException ex) {
+            Logger.getLogger(GIAODIENCHINH.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ttdndiachi.setText(ttdn.get(0).getDiachi());
+        ttdnemail.setText(ttdn.get(0).getEmail());
+        ttdnsdt.setText(ttdn.get(0).getSdt());
+    }
     public void getModelTable()
     {
         modelqlsp = (DefaultTableModel) tblqlsp.getModel();
@@ -537,7 +537,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
             }
         });
         menu.add(lbdshd);
-        lbdshd.setBounds(0, 260, 240, 50);
+        lbdshd.setBounds(0, 230, 240, 50);
 
         lbqlsp.setBackground(new java.awt.Color(255, 255, 255));
         lbqlsp.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
@@ -554,7 +554,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
             }
         });
         menu.add(lbqlsp);
-        lbqlsp.setBounds(0, 207, 240, 50);
+        lbqlsp.setBounds(0, 180, 240, 50);
 
         lbttcn.setBackground(new java.awt.Color(255, 255, 255));
         lbttcn.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
@@ -568,7 +568,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
             }
         });
         menu.add(lbttcn);
-        lbttcn.setBounds(0, 510, 240, 50);
+        lbttcn.setBounds(0, 480, 240, 50);
 
         lbdspn.setBackground(new java.awt.Color(255, 255, 255));
         lbdspn.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
@@ -582,11 +582,11 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
             }
         });
         menu.add(lbdspn);
-        lbdspn.setBounds(0, 310, 240, 50);
+        lbdspn.setBounds(0, 280, 240, 50);
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DoAn/logo.png"))); // NOI18N
         menu.add(logo);
-        logo.setBounds(26, 29, 190, 160);
+        logo.setBounds(30, 10, 190, 160);
 
         lbmenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DoAn/menu.png"))); // NOI18N
         lbmenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -596,7 +596,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
             }
         });
         menu.add(lbmenu);
-        lbmenu.setBounds(190, 710, 50, 50);
+        lbmenu.setBounds(190, 680, 50, 50);
 
         lbthongke.setBackground(new java.awt.Color(255, 255, 255));
         lbthongke.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
@@ -613,7 +613,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
             }
         });
         menu.add(lbthongke);
-        lbthongke.setBounds(0, 360, 240, 50);
+        lbthongke.setBounds(0, 330, 240, 50);
 
         logout.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
         logout.setForeground(new java.awt.Color(255, 255, 255));
@@ -626,7 +626,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
             }
         });
         menu.add(logout);
-        logout.setBounds(20, 710, 140, 50);
+        logout.setBounds(10, 680, 140, 50);
 
         lbkm.setBackground(new java.awt.Color(255, 255, 255));
         lbkm.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
@@ -640,7 +640,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
             }
         });
         menu.add(lbkm);
-        lbkm.setBounds(0, 410, 240, 50);
+        lbkm.setBounds(0, 380, 240, 50);
 
         lbkhachhang.setBackground(new java.awt.Color(255, 255, 255));
         lbkhachhang.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
@@ -654,7 +654,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
             }
         });
         menu.add(lbkhachhang);
-        lbkhachhang.setBounds(0, 460, 240, 50);
+        lbkhachhang.setBounds(0, 430, 240, 50);
 
         lbqlcv.setBackground(new java.awt.Color(255, 255, 255));
         lbqlcv.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
@@ -668,7 +668,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
             }
         });
         menu.add(lbqlcv);
-        lbqlcv.setBounds(0, 560, 240, 50);
+        lbqlcv.setBounds(0, 530, 240, 50);
 
         lbqltk.setBackground(new java.awt.Color(255, 255, 255));
         lbqltk.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
@@ -682,7 +682,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
             }
         });
         menu.add(lbqltk);
-        lbqltk.setBounds(0, 610, 240, 50);
+        lbqltk.setBounds(0, 580, 240, 50);
 
         lbqlnv.setBackground(new java.awt.Color(255, 255, 255));
         lbqlnv.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
@@ -696,10 +696,10 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
             }
         });
         menu.add(lbqlnv);
-        lbqlnv.setBounds(0, 660, 240, 50);
+        lbqlnv.setBounds(0, 630, 240, 50);
 
         getContentPane().add(menu);
-        menu.setBounds(0, 0, 240, 820);
+        menu.setBounds(0, 0, 240, 730);
 
         panel.setBackground(new java.awt.Color(0, 0, 0));
         panel.setLayout(new java.awt.CardLayout());
@@ -1254,7 +1254,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(pnttcn, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         panel.add(ttcn, "ttcn");
@@ -1416,7 +1416,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
                     .addComponent(refresh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel37, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1650,7 +1650,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
                         .addGroup(thongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel17)))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3))
                 .addGap(18, 18, 18)
                 .addGroup(thongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbtongdoanhthu)
@@ -1806,7 +1806,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
                                         .addComponent(btnXoaKM, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btnThemKM, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(btnReset1))))))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panel.add(ctkm, "ctkm");
@@ -2125,7 +2125,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
                     .addComponent(jLabel56)
                     .addComponent(jLabel57)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(qlcvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(qlcvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel59)
@@ -2318,7 +2318,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
                             .addComponent(btnChiTiet4)
                             .addComponent(btnThem4, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnSua4, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(0, 113, Short.MAX_VALUE)))
+                        .addGap(0, 43, Short.MAX_VALUE)))
                 .addGap(42, 42, 42))
         );
 
@@ -2416,7 +2416,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
         dsnvLayout.setVerticalGroup(
             dsnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dsnvLayout.createSequentialGroup()
-                .addContainerGap(102, Short.MAX_VALUE)
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(dsnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jLabel63, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                     .addComponent(jLabel64, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2429,7 +2429,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
         panel.add(dsnv, "qlnv");
 
         getContentPane().add(panel);
-        panel.setBounds(240, 60, 1070, 740);
+        panel.setBounds(240, 60, 1070, 670);
 
         task.setBackground(new java.awt.Color(47, 48, 48));
         task.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -3235,30 +3235,30 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
                 modelcthd.addRow(new Object[]{cc.getTenSP(),cc.getSoLuong(),cc.getDongia(),cc.getThanhTien()});
 //                JOptionPane.showMessageDialog(null, cc.getTenSP());
             }
-//            String tenkh = String.valueOf(modeldshd.getValueAt(i,5));
-//            for(KHACHHANG kh : listkh)
-//            {
-//                if(kh.getMakh().equalsIgnoreCase(tenkh))
-//                {
-//                    chitiet.lbtenkh.setText(kh.getTenkh());
-//                    break;
-//                }
-//            }
-//            ArrayList<NGUOIDUNG> listnd = new ArrayList<>();
-//            listnd = new LOADDULIEU().getListNguoiDung();
-//            for(NGUOIDUNG ng : listnd)
-//            {
-//                if(ng.getManv().equalsIgnoreCase(String.valueOf(modeldshd.getValueAt(i, 1))))
-//                {
-//                    chitiet.lbtennv.setText(ng.getHoten());
-//                    break;
-//                }
-//            }
+            String tenkh = String.valueOf(modeldshd.getValueAt(i,5));
+            for(KHACHHANG kh : listkh)
+            {
+                if(kh.getMakh().equalsIgnoreCase(tenkh))
+                {
+                    chitiet.lbtenkh.setText(kh.getTenkh());
+                    break;
+                }
+            }
+            ArrayList<NGUOIDUNG> listnd = new ArrayList<>();
+            listnd = new LOADDULIEU().getListNguoiDung();
+            for(NGUOIDUNG ng : listnd)
+            {
+                if(ng.getManv().equalsIgnoreCase(String.valueOf(modeldshd.getValueAt(i, 1))))
+                {
+                    chitiet.lbtennv.setText(ng.getHoten());
+                    break;
+                }
+            }
 //            for(CTHD c : listcthd)
 //            {
 //                modelcthd.addRow(new Object[]{c.getMasp(),c.getTensp(),c.getSoluong(),vnmoney.format(c.getDongia()),vnmoney.format(c.getThanhtien())});
 //            }
-//        }
+        }
         else
         {
             JOptionPane.showMessageDialog(rootPane,"Hãy chọn dòng cần xem !");
@@ -3761,7 +3761,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
         {
             if(masp.equals(s.getMaSP()))
             {
-                pn.setGiaNhap(s.getDonGia()*60/100);
+                pn.setGiaNhap(s.getGiaNhap()*60/100);
                 pn.setThanhTien(pn.getGiaNhap()*pn.getSoLuong());
                 break;
             }

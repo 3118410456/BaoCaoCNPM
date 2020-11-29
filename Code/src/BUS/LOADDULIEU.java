@@ -115,7 +115,7 @@ public class LOADDULIEU {
     }
      public ArrayList<NGUOIDUNG> NguoiDung(String tk)
    {
-        String sql = "SELECT * FROM taikhoan WHERE username='"+tk+"'";
+        String sql = "SELECT taikhoan.username,taikhoan.password,taikhoan.TrangThai ,nhanvien.MaNV,nhanvien.HoTen,nhanvien.GioiTinh,nhanvien.NgaySinh,nhanvien.SoDienThoai,nhanvien.DiaChi,nhanvien.Email,chucvu.TenChucVu FROM taikhoan,nhanvien,chucvu WHERE taikhoan.MaNV=nhanvien.MaNV AND chucvu.MaCV=nhanvien.MaCV AND username='"+tk+"'";
         ArrayList<NGUOIDUNG> list = new ArrayList<>();
          try{
           ps = cn.conn.createStatement();
@@ -132,6 +132,36 @@ public class LOADDULIEU {
              tt.setDiachi(rs.getString("DiaChi"));
              tt.setEmail(rs.getString("Email"));
              tt.setSdt(rs.getString("SoDienThoai"));
+             tt.setTenChucVu(rs.getString("TenChucVu"));
+             tt.setTinhtrang(rs.getInt("TinhTrang"));
+             list.add(tt);
+          }
+          
+       }catch(Exception e)
+       { e.printStackTrace();}
+       return list;
+   }
+     
+     public ArrayList<NGUOIDUNG> getListNguoiDung()
+   {
+        String sql = "SELECT taikhoan.username,taikhoan.password,taikhoan.TrangThai ,nhanvien.MaNV,nhanvien.HoTen,nhanvien.GioiTinh,nhanvien.NgaySinh,nhanvien.SoDienThoai,nhanvien.DiaChi,nhanvien.Email,chucvu.TenChucVu FROM taikhoan,nhanvien,chucvu WHERE taikhoan.MaNV=nhanvien.MaNV AND chucvu.MaCV=nhanvien.MaCV ";
+        ArrayList<NGUOIDUNG> list = new ArrayList<>();
+         try{
+          ps = cn.conn.createStatement();
+          rs = ps.executeQuery(sql);
+          while(rs.next())
+          {
+             NGUOIDUNG tt = new NGUOIDUNG();
+             tt.setUser(rs.getString("username"));
+             tt.setPass(rs.getString("password"));
+             tt.setManv(rs.getString("MaNV"));
+             tt.setHoten(rs.getString("HoTen"));
+             tt.setNgaysinh(rs.getString("NgaySinh"));
+             tt.setGioitinh(rs.getString("GioiTinh"));
+             tt.setDiachi(rs.getString("DiaChi"));
+             tt.setEmail(rs.getString("Email"));
+             tt.setSdt(rs.getString("SoDienThoai"));
+             tt.setTenChucVu(rs.getString("TenChucVu"));
              tt.setTinhtrang(rs.getInt("TinhTrang"));
              list.add(tt);
           }
@@ -465,7 +495,7 @@ public class LOADDULIEU {
        public ArrayList<NHANVIEN> getListThongTinNhanVien()
    {
        ArrayList<NHANVIEN> list = new ArrayList<>();
-       String sql = "SELECT MaNV,HoTen,GioiTinh,NgaySinh,SoDienThoai,DiaChi,Email FROM NGUOIDUNG";
+       String sql = "SELECT MaNV,HoTen,GioiTinh,NgaySinh,SoDienThoai,DiaChi,Email FROM nhanvien";
        try {
            PreparedStatement ps = cn.conn.prepareStatement(sql);
            rs = ps.executeQuery();
