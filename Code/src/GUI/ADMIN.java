@@ -1111,7 +1111,7 @@ public class ADMIN extends javax.swing.JFrame {
         {
             if(s.getTenSP().contains(at)||s.getMaNCC().contains(at)||s.getDonViTinh().contains(at)||s.getMaSP().contains(at)||s.getMaLoai().contains(at))
             {
-                modelqlsp.addRow(new Object[]{s.getMaSP(),s.getTenSP(),s.getMaLoai(),s.getSoLuong(),s.getDonViTinh(),vnmoney.format(s.getDonGia()),s.getMaNCC()});
+                modelqlsp.addRow(new Object[]{s.getMaSP(),s.getTenSP(),s.getMaLoai(),s.getSoLuong(),s.getDonViTinh(),vnmoney.format(s.getGiaBan()),s.getMaNCC()});
 
             }
         }
@@ -1123,7 +1123,7 @@ public class ADMIN extends javax.swing.JFrame {
         modelqlsp.setRowCount(0);
         for(SANPHAM s : list)
         {
-            modelqlsp.addRow(new Object[]{s.getMaSP(),s.getTenSP(),s.getMaLoai(),s.getSoLuong(),s.getDonViTinh(),vnmoney.format(s.getDonGia()),s.getMaNCC()});
+            modelqlsp.addRow(new Object[]{s.getMaSP(),s.getTenSP(),s.getMaLoai(),s.getSoLuong(),s.getDonViTinh(),vnmoney.format(s.getGiaBan()),s.getMaNCC()});
         }
     }//GEN-LAST:event_refreshMousePressed
 
@@ -1152,13 +1152,13 @@ public class ADMIN extends javax.swing.JFrame {
         {
             FORM_CTHDadmin chitiet = new FORM_CTHDadmin();
             chitiet.setVisible(true);
-            chitiet.ma.setText(listhd.get(i).getMahd());
+            chitiet.ma.setText(listhd.get(i).getMaHD());
             modelcthd = (DefaultTableModel) chitiet.tblcthd.getModel();
             chitiet.tblcthd.getTableHeader().setBackground(new Color(8,112,150));
             chitiet.tblcthd.getTableHeader().setOpaque(false);
             chitiet.tblcthd.getTableHeader().setForeground(Color.WHITE);
-            listcthd =new LOADDULIEU().getListCTHD(listhd.get(i).getMahd());
-            Double sum = new BUS_SUA().TongTien(listhd.get(i).getMahd());
+            listcthd =new LOADDULIEU().getListCTHD(listhd.get(i).getMaHD());
+            Double sum = new BUS_SUA().TongTien(listhd.get(i).getMaHD());
             if(String.valueOf(modeldshd.getValueAt(i,4)).contains("%")==false)
             {
                 chitiet.lbphantramkm.setText("Không có");
@@ -1170,7 +1170,7 @@ public class ADMIN extends javax.swing.JFrame {
             chitiet.tongtien.setText(vnmoney.format(sum));
             for(CTHD c : listcthd)
             {
-                modelcthd.addRow(new Object[]{c.getMasp(),c.getTensp(),c.getSoluong(),vnmoney.format(c.getDongia()),vnmoney.format(c.getThanhtien())});
+                modelcthd.addRow(new Object[]{c.getMaSP(),c.getTenSP(),c.getSoLuong(),vnmoney.format(c.getDongia()),vnmoney.format(c.getThanhTien())});
             }
         }
         else

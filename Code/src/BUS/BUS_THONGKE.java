@@ -24,7 +24,7 @@ public class BUS_THONGKE {
     public ArrayList<HOADON> LocHDTheoNgay(String ngay)
     {
         ArrayList<HOADON> list = new ArrayList<>();
-        String sql ="select * from hoadon where ngayxuat='"+ngay+"' order by tongtien ASC";
+        String sql ="select * from hoadon where ngaytao='"+ngay+"' order by tongtientra ASC";
         try {
             ps = cn.conn.createStatement();
             rs = ps.executeQuery(sql);
@@ -32,10 +32,10 @@ public class BUS_THONGKE {
             while(rs.next())
             {
                 HOADON h = new HOADON();
-                h.setMahd(rs.getString("MaHD"));
-                h.setNgayxuat(rs.getString("NgayXuat"));
-                h.setTongtien(rs.getDouble("TongTien"));
-                tongtientk+=rs.getDouble("TongTien");
+                h.setMaHD(rs.getString("MaHD"));
+                h.setNgayTao(rs.getString("NgayTao"));
+                h.setTongTienTra(rs.getDouble("TongTienTra"));
+                tongtientk+=rs.getDouble("TongTienTra");
                 list.add(h);
             }
             GIAODIENCHINH.lbtongdoanhthu.setText(cn.vnmoney.format(tongtientk));
@@ -47,7 +47,7 @@ public class BUS_THONGKE {
     public ArrayList<HOADON> LocHDTheoThangNam(String thang,String nam)
     {
         ArrayList<HOADON> list = new ArrayList<>();
-        String sql ="select * from hoadon where ngayxuat LIKE '"+nam+"/"+thang+"/%' order by tongtien ASC";
+        String sql ="select * from hoadon where ngaytao LIKE '"+nam+"/"+thang+"/%' order by tongtientra ASC";
         try {
             ps = cn.conn.createStatement();
             rs = ps.executeQuery(sql);
@@ -55,10 +55,10 @@ public class BUS_THONGKE {
             while(rs.next())
             {
                 HOADON h = new HOADON();
-                h.setMahd(rs.getString("MaHD"));
-                h.setNgayxuat(rs.getString("NgayXuat"));
-                h.setTongtien(rs.getDouble("TongTien"));
-                tongtientk+=rs.getDouble("TongTien");
+                h.setMaHD(rs.getString("MaHD"));
+                h.setNgayTao(rs.getString("NgayTao"));
+                h.setTongTienTra(rs.getDouble("TongTienTra"));
+                tongtientk+=rs.getDouble("TongTienTra");
                 list.add(h);
             }
             GIAODIENCHINH.lbtongdoanhthu.setText(cn.vnmoney.format(tongtientk));
@@ -69,9 +69,9 @@ public class BUS_THONGKE {
     public ArrayList<CTHD> ThongKeSPTheoNgay(String ngay)
     {
          ArrayList<CTHD> list = new ArrayList<>();
-        String sql ="select TenSP,sum(SoLuong) as SoLuong,DonGia,sum(ThanhTien) as ThanhTien\n" +
-"from cthd where mahd in (select mahd from hoadon where ngayxuat LIKE '"+ngay+"') \n" +
-"group by TenSP,DonGia";
+        String sql ="select TenSP,sum(SoLuong) as SoLuong,GiaBan,sum(ThanhTienTra) as ThanhTienTra\n" +
+"from cthd where mahd in (select mahd from hoadon where ngaytao LIKE '"+ngay+"') \n" +
+"group by TenSP,GiaBan";
         try {
             ps = cn.conn.createStatement();
             rs = ps.executeQuery(sql);
@@ -79,10 +79,10 @@ public class BUS_THONGKE {
             while(rs.next())
             {
                 CTHD h = new CTHD();
-                h.setTensp(rs.getString("TenSP"));
-                h.setSoluong(rs.getInt("SoLuong"));
-                h.setDongia(rs.getDouble("DonGia"));
-                h.setThanhtien(rs.getDouble("ThanhTien"));
+                h.setTenSP(rs.getString("TenSP"));
+                h.setSoLuong(rs.getInt("SoLuong"));
+                h.setDongia(rs.getDouble("GiaBan"));
+                h.setThanhTien(rs.getDouble("ThanhTienTra"));
                 list.add(h);
             }
          
@@ -93,9 +93,9 @@ public class BUS_THONGKE {
     public ArrayList<CTHD> ThongKeSPTheoKhoangThoiGian(String from,String to)
     {
          ArrayList<CTHD> list = new ArrayList<>();
-        String sql ="select TenSP,sum(SoLuong) as SoLuong,DonGia,sum(ThanhTien) as ThanhTien\n" +
-"from cthd where mahd in (select MaHD from hoadon where ngayxuat between CAST('"+from+"' AS date) and CAST('"+to+"' AS date))\n" +
-"group by TenSP,DonGia";
+        String sql ="select TenSP,sum(SoLuong) as SoLuong,GiaBan,sum(ThanhTienTra) as ThanhTienTra\n" +
+"from cthd where mahd in (select MaHD from hoadon where ngaytao between CAST('"+from+"' AS date) and CAST('"+to+"' AS date))\n" +
+"group by TenSP,GiaBan";
         try {
             ps = cn.conn.createStatement();
             rs = ps.executeQuery(sql);
@@ -103,10 +103,10 @@ public class BUS_THONGKE {
             while(rs.next())
             {
                 CTHD h = new CTHD();
-                h.setTensp(rs.getString("TenSP"));
-                h.setSoluong(rs.getInt("SoLuong"));
-                h.setDongia(rs.getDouble("DonGia"));
-                h.setThanhtien(rs.getDouble("ThanhTien"));
+                h.setTenSP(rs.getString("TenSP"));
+                h.setSoLuong(rs.getInt("SoLuong"));
+                h.setDongia(rs.getDouble("GiaBan"));
+                h.setThanhTien(rs.getDouble("ThanhTienTra"));
                 list.add(h);
             }
          
@@ -116,7 +116,7 @@ public class BUS_THONGKE {
     }
     public double TongTatCa()
     {
-         String sql = "Select sum(ThanhTien) as tong from CTHD";
+         String sql = "Select sum(ThanhTienTra) as tong from CTHD";
         try
         {
             ps = cn.conn.createStatement();
@@ -133,9 +133,9 @@ public class BUS_THONGKE {
     public ArrayList<CTHD> ThongKeTatCa()
     {
          ArrayList<CTHD> list = new ArrayList<>();
-        String sql ="select TenSP,sum(SoLuong) as SoLuong,DonGia,sum(ThanhTien) as ThanhTien\n" +
+        String sql ="select TenSP,sum(SoLuong) as SoLuong,GiaBan,sum(ThanhTienTra) as ThanhTienTra\n" +
 "from cthd\n" +
-"group by TenSP,DonGia";
+"group by TenSP,GiaBan";
         try {
             ps = cn.conn.createStatement();
             rs = ps.executeQuery(sql);
@@ -143,10 +143,10 @@ public class BUS_THONGKE {
             while(rs.next())
             {
                 CTHD h = new CTHD();
-                h.setTensp(rs.getString("TenSP"));
-                h.setSoluong(rs.getInt("SoLuong"));
-                h.setDongia(rs.getDouble("DonGia"));
-                h.setThanhtien(rs.getDouble("ThanhTien"));
+                h.setTenSP(rs.getString("TenSP"));
+                h.setSoLuong(rs.getInt("SoLuong"));
+                h.setDongia(rs.getDouble("GiaBan"));
+                h.setThanhTien(rs.getDouble("ThanhTienTra"));
                 list.add(h);
             }
          
@@ -167,10 +167,10 @@ public class BUS_THONGKE {
             while(rs.next())
             {
                 CTHD h = new CTHD();
-                h.setTensp(rs.getString("TenSP"));
-                h.setSoluong(rs.getInt("SoLuong"));
-                h.setDongia(rs.getDouble("DonGia"));
-                h.setThanhtien(rs.getDouble("ThanhTien"));
+                h.setTenSP(rs.getString("TenSP"));
+                h.setSoLuong(rs.getInt("SoLuong"));
+                h.setDongia(rs.getDouble("GiaBan"));
+                h.setThanhTien(rs.getDouble("ThanhTienTra"));
                 list.add(h);
             }
          
@@ -181,7 +181,7 @@ public class BUS_THONGKE {
      public ArrayList<HOADON> LocHDTheoKhoangThoiGian(String from,String to)
     {
         ArrayList<HOADON> list = new ArrayList<>();
-        String sql ="select MaHD,CAST(ngayxuat AS date) as NgayXuatNe,TongTien from hoadon where ngayxuat between CAST('"+from+"' AS date) and CAST('"+to+"' AS date) order by CAST(NgayXuat AS date)";
+        String sql ="select MaHD,CAST(ngaytao AS date) as NgayTao,TongTienTra from hoadon where ngaytao between CAST('"+from+"' AS date) and CAST('"+to+"' AS date) order by CAST(NgayTao AS date)";
         try {
             ps = cn.conn.createStatement();
             rs = ps.executeQuery(sql);
@@ -189,10 +189,10 @@ public class BUS_THONGKE {
             while(rs.next())
             {
                 HOADON h = new HOADON();
-                h.setMahd(rs.getString("MaHD"));
-                h.setNgayxuat(rs.getString("NgayXuatNe"));
-                h.setTongtien(rs.getDouble("TongTien"));
-                tongtientk+=rs.getDouble("TongTien");
+                h.setMaHD(rs.getString("MaHD"));
+                h.setNgayTao(rs.getString("NgayTao"));
+                h.setTongTienTra(rs.getDouble("TongTienTra"));
+                tongtientk+=rs.getDouble("TongTienTra");
                 list.add(h);
             }
            GIAODIENCHINH.lbtongdoanhthu.setText(cn.vnmoney.format(tongtientk));

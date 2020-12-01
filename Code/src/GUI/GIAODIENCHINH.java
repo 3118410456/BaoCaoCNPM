@@ -454,6 +454,8 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
         btnReset1 = new javax.swing.JLabel();
         txtPhanTram = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
+        txtMaCT = new javax.swing.JTextField();
         khachhang = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         tblkhachhang = new javax.swing.JTable();
@@ -1742,46 +1744,54 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
         jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel36.setText("Giá trị (%)");
 
+        jLabel62.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel62.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel62.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel62.setText("Mã CTKM ");
+
+        txtMaCT.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+
         javax.swing.GroupLayout ctkmLayout = new javax.swing.GroupLayout(ctkm);
         ctkm.setLayout(ctkmLayout);
         ctkmLayout.setHorizontalGroup(
             ctkmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ctkmLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addGroup(ctkmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ctkmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtMaCT, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(ctkmLayout.createSequentialGroup()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
                         .addGroup(ctkmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel35)
                             .addComponent(btnThemKM, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(2, 2, 2))
-                    .addGroup(ctkmLayout.createSequentialGroup()
+                            .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(ctkmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel33, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel62, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(ctkmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel33, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(ctkmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTenCT, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNgayBD, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNgayKT, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPhanTram, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(ctkmLayout.createSequentialGroup()
-                        .addComponent(btnXoaKM, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnReset1)))
-                .addContainerGap(72, Short.MAX_VALUE))
+                            .addComponent(txtTenCT, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNgayBD, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNgayKT, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPhanTram, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(ctkmLayout.createSequentialGroup()
+                                .addComponent(btnXoaKM, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnReset1)))))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         ctkmLayout.setVerticalGroup(
             ctkmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ctkmLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
                 .addGroup(ctkmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ctkmLayout.createSequentialGroup()
+                        .addGroup(ctkmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtMaCT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel62))
                         .addGap(29, 29, 29)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(ctkmLayout.createSequentialGroup()
-                        .addGap(93, 93, 93)
                         .addGroup(ctkmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(ctkmLayout.createSequentialGroup()
                                 .addGap(80, 80, 80)
@@ -1805,7 +1815,8 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
                                     .addGroup(ctkmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(btnXoaKM, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btnThemKM, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btnReset1))))))
+                                    .addComponent(btnReset1)))))
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2859,6 +2870,9 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
         logout.setVisible(true);
         lbthongke.setVisible(true);
         lbkhachhang.setVisible(true);
+        lbqlcv.setVisible(true);
+        lbqltk.setVisible(true);
+        lbqlnv.setVisible(true);
          lbmenu.setBounds(180,670,50,50);
                 } catch (Exception e) {
                     
@@ -3054,12 +3068,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
            {
                   
                 
-                  try {
-                    modelthongke.addRow(new Object[]{h.getMaHD(),sdf2.format(sdf3.parse(String.valueOf(h.getNgayxuat()))),vnmoney.format(h.getTongtien())});
-                    
-                } catch (ParseException ex) {
-                    Logger.getLogger(GIAODIENCHINH.class.getName()).log(Level.SEVERE, null, ex);
-                }
+               modelthongke.addRow(new Object[]{h.getMaHD(),sdf2.format(sdf3.parse(String.valueOf(h.getNgayTao()))),vnmoney.format(h.getTongTienTra())});
                     
            }
             ArrayList<CTHD> thongkesp = new ArrayList<>();
@@ -3067,7 +3076,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
            modeltksp.setRowCount(0);
            for(CTHD h : thongkesp)
            {
-               modeltksp.addRow(new Object[]{h.getTensp(),h.getSoluong(),vnmoney.format(h.getDongia()),vnmoney.format(h.getThanhtien())});
+               modeltksp.addRow(new Object[]{h.getTenSP(),h.getSoLuong(),vnmoney.format(h.getDongia()),vnmoney.format(h.getThanhTien())});
            }
            lbtksp.setText("Lượng sản phẩm bán ra từ " + sdf2.format(sdf1.parse(tu)) + " đến " + sdf2.format(sdf1.parse(den)));
             }
@@ -3094,7 +3103,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
            {
                   
                    try {
-                    modelthongke.addRow(new Object[]{h.getMaHD(),sdf2.format(sdf1.parse(String.valueOf(h.getNgayTao()))),vnmoney.format(h.getTongtien())});
+                    modelthongke.addRow(new Object[]{h.getMaHD(),sdf2.format(sdf1.parse(String.valueOf(h.getNgayTao()))),vnmoney.format(h.getTongTienTra())});
                 } catch (ParseException ex) {
                     Logger.getLogger(GIAODIENCHINH.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -3105,7 +3114,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
            modeltksp.setRowCount(0);
            for(CTHD h : thongkesp)
            {
-               modeltksp.addRow(new Object[]{h.getTensp(),h.getSoluong(),vnmoney.format(h.getDongia()),vnmoney.format(h.getThanhtien())});
+               modeltksp.addRow(new Object[]{h.getTenSP(),h.getSoLuong(),vnmoney.format(h.getDongia()),vnmoney.format(h.getThanhTien())});
            }
            lbtksp.setText("Lượng sản phẩm bán ra trong tháng " + a +" năm " + b);
         }
@@ -3125,11 +3134,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
             for(HOADON h : listtk)
             {
                
-                try {
-                    modelthongke.addRow(new Object[]{h.getMaHD(),sdf2.format(sdf1.parse(String.valueOf(h.getNgayxuat()))),vnmoney.format(h.getTongtien())});
-                } catch (ParseException ex) {
-                    Logger.getLogger(GIAODIENCHINH.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                modelthongke.addRow(new Object[]{h.getMaHD(),h.getNgayTao(),vnmoney.format(h.getTongTienTra())});
                 
             }
              ArrayList<CTHD> thongkesp = new ArrayList<>();
@@ -3137,7 +3142,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
            modeltksp.setRowCount(0);
            for(CTHD h : thongkesp)
            {
-               modeltksp.addRow(new Object[]{h.getTensp(),h.getSoluong(),vnmoney.format(h.getDongia()),vnmoney.format(h.getThanhtien())});
+               modeltksp.addRow(new Object[]{h.getTenSP(),h.getSoLuong(),vnmoney.format(h.getDongia()),vnmoney.format(h.getThanhTien())});
            }
             try {
                 lbtksp.setText("Lượng sản phẩm bán ra trong ngày " + sdf2.format(sdf1.parse(chonngay)));
@@ -3157,7 +3162,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
             {
                
                 try {
-                    modelthongke.addRow(new Object[]{h.getMahd(),sdf2.format(sdf1.parse(String.valueOf(h.getNgayxuat()))),vnmoney.format(h.getTongtien())});
+                    modelthongke.addRow(new Object[]{h.getMaHD(),sdf2.format(sdf1.parse(String.valueOf(h.getNgayTao()))),vnmoney.format(h.getTongTienTra())});
                 } catch (ParseException ex) {
                     Logger.getLogger(GIAODIENCHINH.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -3171,7 +3176,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
             tktc = new BUS_THONGKE().ThongKeTatCa();
              for(CTHD h : tktc)
         {
-           modeltksp.addRow(new Object[]{h.getTensp(),h.getSoluong(),vnmoney.format(h.getDongia()),vnmoney.format(h.getThanhtien())});
+           modeltksp.addRow(new Object[]{h.getTenSP(),h.getSoLuong(),vnmoney.format(h.getDongia()),vnmoney.format(h.getThanhTien())});
         }
              lbtksp.setText("Tổng lượng sản phẩm đã bán ra được");
              os = new BUS_THONGKE().TongTatCa();
@@ -3184,11 +3189,11 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
        
         ArrayList<CTHD> tklist = new ArrayList<>();
         tklist = new LOADDULIEU().getListCTHD(ma);
-            Double sum = new BUS_SUA().TongTien(listhd.get(i).getMahd());
+            Double sum = new BUS_SUA().TongTien(listhd.get(i).getMaHD());
             modelcttk.setRowCount(0);
             for(CTHD c : tklist)
             {
-                modelcttk.addRow(new Object[]{c.getTensp(),c.getSoluong(),vnmoney.format(c.getDongia()),vnmoney.format(c.getThanhtien())});
+                modelcttk.addRow(new Object[]{c.getTenSP(),c.getSoLuong(),vnmoney.format(c.getDongia()),vnmoney.format(c.getThanhTien())});
             }
     }//GEN-LAST:event_tblthongkeMousePressed
 
@@ -3652,7 +3657,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
             for(HOADON h : listctkh)
             {
                 try {
-                    modelctkh.addRow(new Object[]{h.getMahd(),sdf2.format(sdf1.parse(String.valueOf(h.getNgayxuat()))),vnmoney.format(h.getTongtien())});
+                    modelctkh.addRow(new Object[]{h.getMaHD(),sdf2.format(sdf1.parse(String.valueOf(h.getNgayTao()))),vnmoney.format(h.getNgayTao())});
                 } catch (ParseException ex) {
                     Logger.getLogger(GIAODIENCHINH.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -4196,26 +4201,11 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel QLTK;
-    private javax.swing.JPanel QLTK1;
-    private javax.swing.JPanel QLTK2;
     public static javax.swing.JButton bienmat;
-    private javax.swing.JLabel btnChiTiet;
-    private javax.swing.JLabel btnChiTiet1;
-    private javax.swing.JLabel btnChiTiet2;
     private javax.swing.JLabel btnChiTiet4;
-    private javax.swing.JLabel btnReset;
     private javax.swing.JLabel btnReset1;
-    private javax.swing.JLabel btnReset2;
-    private javax.swing.JLabel btnReset3;
     private javax.swing.JLabel btnReset5;
-    private javax.swing.JLabel btnSua;
-    private javax.swing.JLabel btnSua1;
-    private javax.swing.JLabel btnSua2;
     private javax.swing.JLabel btnSua4;
-    private javax.swing.JLabel btnThem;
-    private javax.swing.JLabel btnThem1;
-    private javax.swing.JLabel btnThem2;
     private javax.swing.JLabel btnThem4;
     private javax.swing.JLabel btnThemKM;
     private javax.swing.JLabel btnXoaKM;
@@ -4282,47 +4272,27 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel60;
-    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     public javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel70;
-    private javax.swing.JLabel jLabel71;
-    private javax.swing.JLabel jLabel72;
-    private javax.swing.JLabel jLabel73;
-    private javax.swing.JLabel jLabel74;
-    private javax.swing.JLabel jLabel75;
-    private javax.swing.JLabel jLabel76;
-    private javax.swing.JLabel jLabel77;
-    private javax.swing.JLabel jLabel78;
-    private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel86;
     private javax.swing.JLabel jLabel87;
     private javax.swing.JLabel jLabel88;
     private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
-    private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
-    private javax.swing.JScrollPane jScrollPane16;
-    private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane19;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -4337,18 +4307,9 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JPanel khachhang;
     private javax.swing.JLabel lbClose;
-    private javax.swing.JLabel lbMaNV;
-    private javax.swing.JLabel lbMaNV1;
-    private javax.swing.JLabel lbMaNV2;
     private javax.swing.JLabel lbMaNV4;
-    private javax.swing.JLabel lbMatKhau;
-    private javax.swing.JLabel lbMatKhau1;
-    private javax.swing.JLabel lbMatKhau2;
     private javax.swing.JLabel lbMatKhau4;
     private javax.swing.JLabel lbMini;
-    private javax.swing.JLabel lbTaiKhoan;
-    private javax.swing.JLabel lbTaiKhoan1;
-    private javax.swing.JLabel lbTaiKhoan2;
     private javax.swing.JLabel lbTaiKhoan4;
     private javax.swing.JLabel lbdshd;
     private javax.swing.JLabel lbdspn;
@@ -4392,9 +4353,6 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
     public static javax.swing.JTable tblqlcv;
     private javax.swing.JTable tblqlnv;
     public static javax.swing.JTable tblqlsp;
-    private javax.swing.JTable tblqltk;
-    private javax.swing.JTable tblqltk1;
-    private javax.swing.JTable tblqltk2;
     private javax.swing.JTable tbltaikhoan;
     private javax.swing.JTable tblthongke;
     private javax.swing.JTable tbltksp;
@@ -4406,25 +4364,14 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
     private javax.swing.JTextField ttdnmanv;
     private javax.swing.JTextField ttdnngaysinh;
     private javax.swing.JTextField ttdnsdt;
-    private javax.swing.JTextField txtMaNV;
-    private javax.swing.JTextField txtMaNV1;
-    private javax.swing.JTextField txtMaNV2;
+    private javax.swing.JTextField txtMaCT;
     private javax.swing.JTextField txtMaNV4;
-    private javax.swing.JTextField txtMatKhau;
-    private javax.swing.JTextField txtMatKhau1;
-    private javax.swing.JTextField txtMatKhau2;
     private javax.swing.JTextField txtMatKhau4;
     private com.toedter.calendar.JDateChooser txtNgayBD;
     private com.toedter.calendar.JDateChooser txtNgayKT;
     private javax.swing.JTextField txtPhanTram;
-    private javax.swing.JTextField txtTaiKhoan;
-    private javax.swing.JTextField txtTaiKhoan1;
-    private javax.swing.JTextField txtTaiKhoan2;
     private javax.swing.JTextField txtTaiKhoan4;
     private javax.swing.JTextField txtTenCT;
-    private javax.swing.JComboBox<String> txtTrangThai;
-    private javax.swing.JComboBox<String> txtTrangThai1;
-    private javax.swing.JComboBox<String> txtTrangThai2;
     private javax.swing.JComboBox<String> txtTrangThai4;
     private javax.swing.JTextField txtsdtkh;
     private javax.swing.JTextField txttenkh;

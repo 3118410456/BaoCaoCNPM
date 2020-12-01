@@ -513,7 +513,7 @@ public class GDBH extends javax.swing.JFrame {
         double sum = 0;
         for(CTHD h : listcthd)
         {
-            sum+=h.getThanhtien();
+            sum+=h.getThanhTien();
         }
         thanhtien.setText(GIAODIENCHINH.vnmoney.format(sum));
     }
@@ -523,7 +523,7 @@ public class GDBH extends javax.swing.JFrame {
         listcthd = new LOADDULIEU().TTGioHang();
         for(CTHD h: listcthd)
         {
-              modelgd.addRow(new Object[]{h.getTensp(),h.getSoluong(),GIAODIENCHINH.vnmoney.format(h.getDongia()),GIAODIENCHINH.vnmoney.format(h.getThanhtien())});
+              modelgd.addRow(new Object[]{h.getTenSP(),h.getSoLuong(),GIAODIENCHINH.vnmoney.format(h.getDongia()),GIAODIENCHINH.vnmoney.format(h.getThanhTien())});
 
         }
         TinhTong();
@@ -674,11 +674,11 @@ public class GDBH extends javax.swing.JFrame {
        {
        for(CTHD h : listcthd)
        {
-           if(h.getTensp().equals(ten))
+           if(h.getTenSP().equals(ten))
            {
-               if(new BUS_XOA().xoa1spkhoiGiohang(h.getMasp()))
+               if(new BUS_XOA().xoa1spkhoiGiohang(h.getMaSP()))
                {}
-               if(new BUS_THEM().ThemGioHang(h.getMasp(), sua1))
+               if(new BUS_THEM().ThemGioHang(h.getMaSP(), sua1))
                {}
                LocListCTHD();
                JOptionPane.showMessageDialog(rootPane,"Đã sửa");
@@ -701,7 +701,7 @@ public class GDBH extends javax.swing.JFrame {
         modelgd.setRowCount(0);
         for(CTHD h : listcthd)
         {
-             modelgd.addRow(new Object[]{h.getTensp(),h.getSoluong(),GIAODIENCHINH.vnmoney.format(h.getDongia()),GIAODIENCHINH.vnmoney.format(h.getThanhtien())});
+             modelgd.addRow(new Object[]{h.getTenSP(),h.getSoLuong(),GIAODIENCHINH.vnmoney.format(h.getDongia()),GIAODIENCHINH.vnmoney.format(h.getThanhTien())});
         }
         TinhTong();
     }//GEN-LAST:event_SuaActionPerformed
@@ -773,12 +773,12 @@ public class GDBH extends javax.swing.JFrame {
             String abb = taochuoi(3) + rd2;
             for(CTHD h : listcthd)
                  {
-          int mua = h.getSoluong();
-          int cosan = new BUS_TINHTOAN().tongspkho(h.getMasp());
+          int mua = h.getSoLuong();
+          int cosan = new BUS_TINHTOAN().tongspkho(h.getMaSP());
           int conlai =cosan - mua;
           if(new BUS_THEM().TaoHD(h,abb))
           {
-              if(new BUS_SUA().suasoluongSP(h.getMasp(), conlai)){}
+              if(new BUS_SUA().suasoluongSP(h.getMaSP(), conlai)){}
               
           }
       }
@@ -816,12 +816,12 @@ public class GDBH extends javax.swing.JFrame {
             String a = taochuoi(3) + rd2;
             for(CTHD h : listcthd)
                  {
-          int mua = h.getSoluong();
-          int cosan = new BUS_TINHTOAN().tongspkho(h.getMasp());
+          int mua = h.getSoLuong();
+          int cosan = new BUS_TINHTOAN().tongspkho(h.getMaSP());
           int conlai =cosan - mua;
           if(new BUS_THEM().TaoHD(h,a))
           {
-              if(new BUS_SUA().suasoluongSP(h.getMasp(), conlai)){}
+              if(new BUS_SUA().suasoluongSP(h.getMaSP(), conlai)){}
               
           }
       }
@@ -1050,7 +1050,7 @@ public class GDBH extends javax.swing.JFrame {
            double sum = 0;
         for(CTHD h : listcthd)
         {
-            sum+=h.getThanhtien();
+            sum+=h.getThanhTien();
         }
       
         double kd = Double.parseDouble(txtkhachdua.getText());

@@ -46,11 +46,11 @@ public class LOADDULIEU {
             while(rs.next())
             {
                 SANPHAM sp = new SANPHAM();
-                sp.setMaSP(rs.getString("MaSP"));
-                sp.setTenSP(rs.getString("TenSP"));
+                sp.setMaSP(rs.getString("masp"));
+                sp.setTenSP(rs.getString("tensp"));
                 sp.setMaLoai(rs.getString("TenLoai"));
-                sp.setSoLuong(rs.getInt("SoLuong"));
-                sp.setDonViTinh(rs.getString("DonViTinh"));
+                sp.setSoLuong(rs.getInt("soluong"));
+                sp.setDonViTinh(rs.getString("donvitinh"));
                 sp.setGiaBan(rs.getDouble("GiaBan"));
                 sp.setGiaNhap(rs.getDouble("GiaNhap"));
                 sp.setMaNCC(rs.getString("TenNCC"));
@@ -431,9 +431,9 @@ public class LOADDULIEU {
               while(rs.next())
               {
                   HOADON h = new HOADON();
-                  h.setMahd(rs.getString("MaHD"));
-                  h.setNgayxuat(rs.getString("NgayXuat"));
-                  h.setTongtien(rs.getDouble("TongTien"));
+                  h.setMaHD(rs.getString("MaHD"));
+                  h.setNgayTao(rs.getString("NgayTao"));
+                  h.setTongTienTra(rs.getDouble("TongTien"));
                   list.add(h);
               }
           } catch (Exception e) {

@@ -36,8 +36,8 @@ public class BUS_THEM {
     ResultSet rs;
      public boolean themSP(SANPHAM s)
     {
-      String sql = "INSERT INTO SANPHAM(MaSP,TenSP,MaLoai,SoLuong,DonViTinh,DonGia,TenNhaSX)"
-                + "VALUES(?,?,?,?,?,?,?)";
+      String sql = "INSERT INTO SANPHAM(MaSP,TenSP,MaLoai,SoLuong,DonViTinh,GiaBan,GiaNhap,NhaCC)"
+                + "VALUES(?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = cn.conn.prepareStatement(sql);
             ps.setString(1,s.getMaSP());
@@ -45,8 +45,9 @@ public class BUS_THEM {
             ps.setString(3,s.getMaLoai());
             ps.setInt(4,s.getSoLuong());
             ps.setString(5,s.getDonViTinh());
-            ps.setDouble(6, s.getDonGia());
-            ps.setString(7, s.getMaNCC());
+            ps.setDouble(6, s.getGiaBan());
+            ps.setDouble(7, s.getGiaBan());
+            ps.setString(8, s.getMaNCC());
             return ps.executeUpdate() > 0;
             
         }catch(Exception e) {
@@ -57,14 +58,18 @@ public class BUS_THEM {
     }
      public boolean themHD(HOADON h)
     {
-      String sql = "INSERT INTO HOADON(MaHD,MaNV,NgayXuat,TongTien)"
-                + "VALUES(?,?,?,?)";
+      String sql = "INSERT INTO HOADON(MaHD,MaNV,MaKH,MaKM,NgayTao,TongCong,PhanTram,TongTienTra)"
+                + "VALUES(?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = cn.conn.prepareStatement(sql);   
-            ps.setString(1,h.getMahd());
-            ps.setString(2, h.getManv());
-            ps.setString(3,h.getNgayxuat());
-            ps.setDouble(4,h.getTongtien());
+            ps.setString(1,h.getMaHD());
+            ps.setString(2, h.getMaNV());
+            ps.setString(2, h.getMaKH());
+            ps.setString(2, h.getMaKM());
+            ps.setString(3,h.getNgayTao());
+            ps.setDouble(4,h.getTongCong());
+            ps.setFloat(4,h.getPhanTramKM());
+            ps.setDouble(4,h.getTongTienTra());
             return ps.executeUpdate() > 0;
         }catch(Exception e) {
             e.printStackTrace();
@@ -98,12 +103,12 @@ public class BUS_THEM {
                 + "VALUES(?,?,?,?,?,?)";
         try {
             PreparedStatement ps = cn.conn.prepareStatement(sql);         
-            ps.setString(1, ch.getMahd());
-            ps.setString(2,ch.getMasp());
-            ps.setString(3,ch.getTensp());
-            ps.setInt(4,ch.getSoluong());
+            ps.setString(1, ch.getMaHD());
+            ps.setString(2,ch.getMaSP());
+            ps.setString(3,ch.getTenSP());
+            ps.setInt(4,ch.getSoLuong());
             ps.setDouble(5,ch.getDongia());
-            ps.setDouble(6,ch.getThanhtien());
+            ps.setDouble(6,ch.getThanhTien());
             return ps.executeUpdate() > 0;
             
         }catch(Exception e) {
@@ -168,11 +173,11 @@ public class BUS_THEM {
         try {
             ps = cn.conn.prepareStatement(sql);         
             ps.setString(1,MaHD);
-            ps.setString(2,h.getMasp());
-            ps.setString(3,h.getTensp());
-            ps.setInt(4,h.getSoluong());
+            ps.setString(2,h.getMaSP());
+            ps.setString(3,h.getTenSP());
+            ps.setInt(4,h.getSoLuong());
             ps.setDouble(5,h.getDongia());
-            ps.setDouble(6,h.getThanhtien());
+            ps.setDouble(6,h.getThanhTien());
             return ps.executeUpdate() > 0;
             
         }
@@ -192,7 +197,7 @@ public class BUS_THEM {
                 double tong=0.0;
                 for(CTHD h : list)
                 {
-                    tong+=h.getThanhtien();
+                    tong+=h.getThanhTien();
                 }
                 Date day = new Date();
         try {
@@ -241,7 +246,7 @@ public class BUS_THEM {
     }
     public boolean themTTNV(NHANVIEN nv)
    {
-       String sql =" INSERT INTO NGUOIDUNG(HoTen,GioiTinh,NgaySinh,SoDienThoai,DiaChi,Email) VALUES(?,?,?,?,?,?)";
+       String sql =" INSERT INTO nhanvien(HoTen,GioiTinh,NgaySinh,SoDienThoai,DiaChi,Email,MaCV) VALUES(?,?,?,?,?,?,?)";
        try {
            PreparedStatement ps = cn.conn.prepareStatement(sql);
            
@@ -252,6 +257,7 @@ public class BUS_THEM {
            ps.setString(4, nv.getSDT());
            ps.setString(5, nv.getDiaChi());
            ps.setString(6, nv.getEmail());
+           ps.setString(7, nv.getTenChucVu());
            
            return ps.executeUpdate() > 0 ;
        } catch (Exception e) {

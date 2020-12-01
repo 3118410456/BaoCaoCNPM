@@ -13,6 +13,7 @@ import static GUI.GIAODIENCHINH.list;
 import static GUI.GIAODIENCHINH.modelqlsp;
 import static GUI.GIAODIENCHINH.vnmoney;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -103,11 +104,11 @@ public class FORM_ADDNHANVIEN extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txttensp = new javax.swing.JTextField();
-        txtmasp = new javax.swing.JTextField();
-        txtdvt = new javax.swing.JTextField();
-        txtsoluong = new javax.swing.JTextField();
-        txtgiaban = new javax.swing.JTextField();
+        txttennv = new javax.swing.JTextField();
+        txtmanv = new javax.swing.JTextField();
+        txtdiachi = new javax.swing.JTextField();
+        txtsdt = new javax.swing.JTextField();
+        txtemail = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         combogioitinh = new javax.swing.JComboBox<>();
@@ -115,7 +116,7 @@ public class FORM_ADDNHANVIEN extends javax.swing.JFrame {
         combochucvu = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        date = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -187,33 +188,33 @@ public class FORM_ADDNHANVIEN extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        txttensp.setForeground(new java.awt.Color(255, 255, 255));
-        txttensp.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tên nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
-        txttensp.setOpaque(false);
+        txttennv.setForeground(new java.awt.Color(255, 255, 255));
+        txttennv.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tên nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
+        txttennv.setOpaque(false);
 
-        txtmasp.setForeground(new java.awt.Color(255, 255, 255));
-        txtmasp.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mã nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
-        txtmasp.setOpaque(false);
-        txtmasp.addActionListener(new java.awt.event.ActionListener() {
+        txtmanv.setForeground(new java.awt.Color(255, 255, 255));
+        txtmanv.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mã nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
+        txtmanv.setOpaque(false);
+        txtmanv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtmaspActionPerformed(evt);
+                txtmanvActionPerformed(evt);
             }
         });
 
-        txtdvt.setForeground(new java.awt.Color(255, 255, 255));
-        txtdvt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Địa chỉ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
-        txtdvt.setOpaque(false);
+        txtdiachi.setForeground(new java.awt.Color(255, 255, 255));
+        txtdiachi.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Địa chỉ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
+        txtdiachi.setOpaque(false);
 
-        txtsoluong.setForeground(new java.awt.Color(255, 255, 255));
-        txtsoluong.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SĐT", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
-        txtsoluong.setOpaque(false);
+        txtsdt.setForeground(new java.awt.Color(255, 255, 255));
+        txtsdt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SĐT", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
+        txtsdt.setOpaque(false);
 
-        txtgiaban.setForeground(new java.awt.Color(255, 255, 255));
-        txtgiaban.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Email", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
-        txtgiaban.setOpaque(false);
-        txtgiaban.addActionListener(new java.awt.event.ActionListener() {
+        txtemail.setForeground(new java.awt.Color(255, 255, 255));
+        txtemail.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Email", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
+        txtemail.setOpaque(false);
+        txtemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtgiabanActionPerformed(evt);
+                txtemailActionPerformed(evt);
             }
         });
 
@@ -260,14 +261,14 @@ public class FORM_ADDNHANVIEN extends javax.swing.JFrame {
                             .addComponent(jLabel5)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(date, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(combochucvu, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtmasp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                            .addComponent(txttensp, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtsoluong, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtdvt, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtgiaban, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtmanv, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                            .addComponent(txttennv, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtsdt, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtdiachi, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtemail, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(combogioitinh, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -282,12 +283,12 @@ public class FORM_ADDNHANVIEN extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtmasp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtmanv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(104, 104, 104)
                         .addComponent(jLabel4)))
                 .addGap(21, 21, 21)
-                .addComponent(txttensp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txttennv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addGap(10, 10, 10)
@@ -295,13 +296,13 @@ public class FORM_ADDNHANVIEN extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(txtsoluong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtsdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(txtdvt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtdiachi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(txtgiaban, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addGap(8, 8, 8)
@@ -310,7 +311,7 @@ public class FORM_ADDNHANVIEN extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        txtgiaban.getAccessibleContext().setAccessibleName("Giá Bán");
+        txtemail.getAccessibleContext().setAccessibleName("Giá Bán");
         combogioitinh.getAccessibleContext().setAccessibleName("");
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -347,22 +348,22 @@ int mx,my;
     private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
        boolean check = false;
        KiemTraLoi ck = new KiemTraLoi();
-       if(txtmasp.getText().isEmpty()==false&&txtdvt.getText().isEmpty()==false&&txttensp.getText().isEmpty()==false)
+       if(txtmanv.getText().isEmpty()==false&&txttennv.getText().isEmpty()==false)
        {
-           if(ck.KT_SoLuong(txtsoluong.getText())&&ck.KT_SoLuong(txtgiaban.getText())&&ck.KT_SoLuong(txtgianhap.getText()))
+           if(ck.KT_SoLuong(txtsdt.getText())&&ck.KT_SoLuong(txtemail.getText()))
            {
-               if(Integer.parseInt(txtsoluong.getText())>0 && Double.parseDouble(txtgiaban.getText())>0 && Double.parseDouble(txtgianhap.getText())>0)
+               if(Integer.parseInt(txtsdt.getText())>0 && Double.parseDouble(txtemail.getText())>0 )
                {
                    check=true;
                }
                else
                {
-                   JOptionPane.showMessageDialog(rootPane, "Hãy nhập số lượng hoặc đơn giá bán hoặc đơn giá nhập hợp lệ");
+                   JOptionPane.showMessageDialog(rootPane, "Hãy nhập thông tin hợp lệ");
                }
            }
            else
            {
-               JOptionPane.showMessageDialog(rootPane, "Hãy nhập số lượng hoặc đơn giá bán hoặc đơn giá nhập hợp lệ");
+               JOptionPane.showMessageDialog(rootPane, "Hãy nhập thông tin hợp lệ");
            }
        }
        else
@@ -371,30 +372,33 @@ int mx,my;
        }
        if(check==true)
        {
-       SANPHAM s = new SANPHAM();
+       NHANVIEN s = new NHANVIEN();
  
-       String MaSP = txtmasp.getText() ;
-       String TenSP = txttensp.getText();
+       String MaNV = txtmanv.getText() ;
+       String TenNV = txttennv.getText();
       
-       int SoLuong = Integer.parseInt(txtsoluong.getText());
-       String DonViTinh = txtdvt.getText();
-       double GiaBan = Double.parseDouble(txtgiaban.getText());
-       double GiaNhap = Double.parseDouble(txtgianhap.getText());
-      
+       SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+       String NgaySinh = f.format(date.getDate());
        
-       s.setMaSP(MaSP);
-       s.setTenSP(TenSP);
-       s.setMaLoai(tachtrai(String.valueOf(combochucvu.getSelectedItem())));
-       s.setSoLuong(SoLuong);
-       s.setDonViTinh(DonViTinh);
-       s.setGiaBan(GiaBan);
-       s.setGiaNhap(GiaNhap);
-       s.setMaNCC(tachtrai(String.valueOf(combogioitinh.getSelectedItem())));
+       String DiaChi = txtdiachi.getText();
+       String Email = txtemail.getText();
        
        
        
+       s.setMaNV(MaNV);
+       s.setHoTen(TenNV);
+       s.setTenChucVu(tachtrai(String.valueOf(combochucvu.getSelectedItem())));
        
-        if(new BUS_THEM().themSP(s))
+       s.setNgaySinh(NgaySinh);
+       s.setDiaChi(DiaChi);
+       s.setEmail(Email);
+       
+       s.setGioiTinh(tachtrai(String.valueOf(combogioitinh.getSelectedItem())));
+       
+       
+       
+       
+        if(new BUS_THEM().themTTNV(s))
        {
            JOptionPane.showMessageDialog(this, "Đã thêm sản phẩm");
            GIAODIENCHINH.modelqlsp.setRowCount(0);
@@ -422,16 +426,16 @@ int mx,my;
         String a = GIAODIENCHINH.taochuoi(2);
          int b = (int) (Math.random() * ((99999 - 10000) + 1)) + 10000;
         String c = String.valueOf(b);
-        txtmasp.setText(a+c);
+        txtmanv.setText(a+c);
     }//GEN-LAST:event_jLabel4MousePressed
 
-    private void txtgiabanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtgiabanActionPerformed
+    private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtgiabanActionPerformed
+    }//GEN-LAST:event_txtemailActionPerformed
 
-    private void txtmaspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmaspActionPerformed
+    private void txtmanvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmanvActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtmaspActionPerformed
+    }//GEN-LAST:event_txtmanvActionPerformed
 
     /**
      * @param args the command line arguments
@@ -478,7 +482,7 @@ int mx,my;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> combochucvu;
     private javax.swing.JComboBox<String> combogioitinh;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser date;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -488,11 +492,11 @@ int mx,my;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    public javax.swing.JTextField txtdvt;
-    public javax.swing.JTextField txtgiaban;
-    public javax.swing.JTextField txtmasp;
-    public javax.swing.JTextField txtsoluong;
-    public javax.swing.JTextField txttensp;
+    public javax.swing.JTextField txtdiachi;
+    public javax.swing.JTextField txtemail;
+    public javax.swing.JTextField txtmanv;
+    public javax.swing.JTextField txtsdt;
+    public javax.swing.JTextField txttennv;
     // End of variables declaration//GEN-END:variables
 
     private static class SanPham {
