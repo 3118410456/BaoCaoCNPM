@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 26, 2020 lúc 10:20 AM
+-- Thời gian đã tạo: Th12 02, 2020 lúc 02:42 PM
 -- Phiên bản máy phục vụ: 10.4.14-MariaDB
 -- Phiên bản PHP: 7.2.34
 
@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Cơ sở dữ liệu: `qlsieuthi`
 --
-CREATE DATABASE IF NOT EXISTS `qlsieuthi` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+CREATE DATABASE IF NOT EXISTS `qlsieuthi` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `qlsieuthi`;
 
 -- --------------------------------------------------------
@@ -49,6 +49,13 @@ CREATE TABLE `chucvu` (
   `Luong` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `chucvu`
+--
+
+INSERT INTO `chucvu` (`MaCV`, `TenChucVu`, `SoLuong`, `Luong`) VALUES
+('NV', 'Nhân viên', 1, 1500000);
+
 -- --------------------------------------------------------
 
 --
@@ -61,6 +68,13 @@ CREATE TABLE `cthd` (
   `SoLuong` int(11) NOT NULL,
   `GiaTien` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `cthd`
+--
+
+INSERT INTO `cthd` (`MaHD`, `MaSP`, `SoLuong`, `GiaTien`) VALUES
+('HD001', '1', 10, 20000);
 
 -- --------------------------------------------------------
 
@@ -77,6 +91,13 @@ CREATE TABLE `ctpn` (
   `DonViTinh` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `GiaNhap` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `ctpn`
+--
+
+INSERT INTO `ctpn` (`MaPN`, `MaSP`, `TenSP`, `TenLoaiSP`, `SoLuong`, `DonViTinh`, `GiaNhap`) VALUES
+('PN001', '1', 'kẹo', 'Đồ dùng', 100, 'cai', 1000);
 
 -- --------------------------------------------------------
 
@@ -102,12 +123,19 @@ CREATE TABLE `hoadon` (
   `MaNV` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `MaKH` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `MaKM` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `NgayTao` timestamp NOT NULL DEFAULT current_timestamp(),
+  `NgayTao` date NOT NULL DEFAULT current_timestamp(),
   `TongCong` double NOT NULL,
   `PhanTramKM` float NOT NULL,
   `TongTienTra` double NOT NULL,
   `TrangThai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `hoadon`
+--
+
+INSERT INTO `hoadon` (`MaHD`, `MaNV`, `MaKH`, `MaKM`, `NgayTao`, `TongCong`, `PhanTramKM`, `TongTienTra`, `TrangThai`) VALUES
+('HD001', 'NV001', 'kh2', 'HFMLH879612', '2020-11-25', 500000, 10, 450000, 1);
 
 -- --------------------------------------------------------
 
@@ -142,6 +170,13 @@ CREATE TABLE `kho` (
   `DiaChi` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `kho`
+--
+
+INSERT INTO `kho` (`MaKho`, `TenKho`, `DiaChi`) VALUES
+('K001', 'Kho 1', '55 đường Trần Phú');
+
 -- --------------------------------------------------------
 
 --
@@ -151,8 +186,8 @@ CREATE TABLE `kho` (
 CREATE TABLE `khuyenmai` (
   `MaKM` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `TenCT` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `NgayBD` timestamp NOT NULL DEFAULT current_timestamp(),
-  `NgayKT` timestamp NOT NULL DEFAULT current_timestamp(),
+  `NgayBD` date NOT NULL DEFAULT current_timestamp(),
+  `NgayKT` date NOT NULL DEFAULT current_timestamp(),
   `GiaTienToiThieu` double NOT NULL,
   `PhanTram` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -162,7 +197,27 @@ CREATE TABLE `khuyenmai` (
 --
 
 INSERT INTO `khuyenmai` (`MaKM`, `TenCT`, `NgayBD`, `NgayKT`, `GiaTienToiThieu`, `PhanTram`) VALUES
-('HFMLH879612', 'Khai trương', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 50);
+('HFMLH879612', 'Khai trương', '2020-11-18', '2020-11-19', 0, 50);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `nguoidung`
+--
+
+CREATE TABLE `nguoidung` (
+  `user` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `MaNV` varchar(11) NOT NULL,
+  `HoTen` varchar(50) NOT NULL,
+  `NgaySinh` date NOT NULL,
+  `Gioitinh` varchar(11) NOT NULL,
+  `DiaChi` varchar(50) NOT NULL,
+  `Email` varchar(50) NOT NULL,
+  `SoDienThoai` int(12) NOT NULL,
+  `MaCV` varchar(11) NOT NULL,
+  `TinhTrang` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -191,13 +246,20 @@ INSERT INTO `nhacungcap` (`MaNCC`, `TenNCC`) VALUES
 CREATE TABLE `nhanvien` (
   `MaNV` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `HoTen` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `NgaySinh` timestamp NULL DEFAULT current_timestamp(),
+  `NgaySinh` date DEFAULT NULL,
   `GioiTinh` int(50) DEFAULT NULL,
   `DiaChi` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `SoDienThoai` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Email` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `MaCV` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `nhanvien`
+--
+
+INSERT INTO `nhanvien` (`MaNV`, `HoTen`, `NgaySinh`, `GioiTinh`, `DiaChi`, `SoDienThoai`, `Email`, `MaCV`) VALUES
+('NV001', 'Nguyễn Huy Trường', '2000-08-24', 0, '123acb đường xyz', '0900000000', 'huytruong@gmail.com', 'NV');
 
 -- --------------------------------------------------------
 
@@ -239,12 +301,19 @@ CREATE TABLE `phieunhap` (
   `MaKho` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `MaNV` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `MaNCC` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `NgayNhap` timestamp NOT NULL DEFAULT current_timestamp(),
+  `NgayNhap` date NOT NULL DEFAULT current_timestamp(),
   `TongSoLuong` int(11) NOT NULL,
   `TongTien` double NOT NULL,
   `GhiChu` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `TrangThai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `phieunhap`
+--
+
+INSERT INTO `phieunhap` (`MaPN`, `MaKho`, `MaNV`, `MaNCC`, `NgayNhap`, `TongSoLuong`, `TongTien`, `GhiChu`, `TrangThai`) VALUES
+('PN001', 'K001', 'NV001', 'VN0001', '2020-11-26', 100, 100000, 'sâu răng', 0);
 
 -- --------------------------------------------------------
 
@@ -256,11 +325,18 @@ CREATE TABLE `phieuxuat` (
   `MaPX` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `MaKho` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `MaNV` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `NgayXuat` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `NgayXuat` date NOT NULL DEFAULT current_timestamp(),
   `TongSoLuong` int(11) NOT NULL,
   `TongTien` double NOT NULL,
   `TrangThai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `phieuxuat`
+--
+
+INSERT INTO `phieuxuat` (`MaPX`, `MaKho`, `MaNV`, `NgayXuat`, `TongSoLuong`, `TongTien`, `TrangThai`) VALUES
+('PX001', 'K001', 'NV001', '2020-12-01', 10, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -287,7 +363,7 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`MaSP`, `TenSP`, `AnhSP`, `MaLoai`, `TenLoaiSP`, `SoLuong`, `DonViTinh`, `GiaNhap`, `GiaBan`, `MaNCC`, `TrangThai`) VALUES
-('1', 'kẹo', NULL, 'DD', 'snack', 0, '', 0, 0, 'VN0001', 1);
+('1', 'kẹo', NULL, 'DD', 'snack', 10, 'cai', 1000, 2000, 'VN0001', 1);
 
 -- --------------------------------------------------------
 
@@ -304,6 +380,13 @@ CREATE TABLE `sanphamloi` (
   `LyDo` text COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `sanphamloi`
+--
+
+INSERT INTO `sanphamloi` (`MaSP`, `TenSP`, `SoLuong`, `DonGia`, `MaNCC`, `LyDo`) VALUES
+('1', 'kẹo', 10, 1000, 'VN0001', 'Lỗi phong bì');
+
 -- --------------------------------------------------------
 
 --
@@ -316,6 +399,13 @@ CREATE TABLE `taikhoan` (
   `MaNV` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `TrangThai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `taikhoan`
+--
+
+INSERT INTO `taikhoan` (`username`, `password`, `MaNV`, `TrangThai`) VALUES
+('htrg', '2000', 'NV001', 1);
 
 -- --------------------------------------------------------
 
@@ -357,6 +447,13 @@ CREATE TABLE `tudo` (
   `TenNguoiGui` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `SDT` varchar(10) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tudo`
+--
+
+INSERT INTO `tudo` (`SoTu`, `MaKH`, `TenNguoiGui`, `SDT`) VALUES
+('001', 'KH416954', 'Nguyen Thanh Sang', '0934045700');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -421,6 +518,12 @@ ALTER TABLE `kho`
 --
 ALTER TABLE `khuyenmai`
   ADD PRIMARY KEY (`MaKM`);
+
+--
+-- Chỉ mục cho bảng `nguoidung`
+--
+ALTER TABLE `nguoidung`
+  ADD PRIMARY KEY (`user`);
 
 --
 -- Chỉ mục cho bảng `nhacungcap`
