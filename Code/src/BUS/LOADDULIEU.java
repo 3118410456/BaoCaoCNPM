@@ -11,6 +11,7 @@ import DTO.CTHD;
 import DTO.CTPN;
 import DTO.HOADON;
 import DTO.KHACHHANG;
+import DTO.KHO;
 import DTO.KHUYENMAI;
 import DTO.MALOAI;
 import DTO.NGUOIDUNG;
@@ -18,7 +19,9 @@ import DTO.NHACUNGCAP;
 import DTO.NHANVIEN;
 import DTO.PHIEUNHAP;
 import DTO.SANPHAM;
+import DTO.SANPHAMLOI;
 import DTO.TAIKHOAN;
+import DTO.TUDO;
 import GUI.GIAODIENCHINH;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -386,6 +389,7 @@ public class LOADDULIEU {
             kh.setMaNCC(rs.getString("MaNCC"));
             kh.setNgayNhap(rs.getString("NgayNhap"));
             kh.setTongTien(rs.getDouble("TongTien"));
+            kh.setTrangThai(rs.getString("TrangThai"));
             
             list.add(kh);
         }
@@ -545,6 +549,78 @@ public class LOADDULIEU {
             list.add(cv);
         }
                
+           } catch (Exception e) {
+               e.printStackTrace();
+           }
+        return list;
+       }
+       
+       public ArrayList<TUDO> getListTuDo()
+       {
+           ArrayList<TUDO> list = new ArrayList<>();
+           String sql ="select * from tudo";
+           try {
+               PreparedStatement ps = cn.conn.prepareStatement(sql);
+               rs = ps.executeQuery();
+               
+               while(rs.next())
+               {
+                   TUDO td = new TUDO();
+                   td.setSoTu(rs.getString("SoTu"));
+                   td.setMaKH(rs.getString("MaKH"));
+                   td.setTenKH(rs.getString("TenNguoiGui"));
+                   td.setSDT(rs.getString("SDT"));
+                   list.add(td);
+               }
+           } catch (Exception e) {
+               e.printStackTrace();
+           }
+        return list;
+       }
+       
+       public ArrayList<SANPHAMLOI> getListSanPhamLoi()
+       {
+           ArrayList<SANPHAMLOI> list = new ArrayList<>();
+           String sql ="SELECT *,DonGia*SoLuong AS ThanhTien from sanphamloi";
+           try {
+               PreparedStatement ps = cn.conn.prepareStatement(sql);
+               rs = ps.executeQuery();
+               
+               while(rs.next())
+               {
+                   SANPHAMLOI spl = new SANPHAMLOI();
+                   spl.setMaSP(rs.getString("MaSP"));
+                   spl.setTenSP(rs.getString("TenSP"));
+                   spl.setSoLuong(rs.getInt("SoLuong"));
+                   spl.setMaNCC(rs.getString("MaNCC"));
+                   spl.setDonGia(rs.getDouble("DonGia"));
+                   spl.setLyDo(rs.getString("LyDo"));
+                   spl.setThanhTien(rs.getDouble("ThanhTien"));
+                   list.add(spl);
+               }
+           } catch (Exception e) {
+               e.printStackTrace();
+           }
+        return list;
+       }
+       
+       
+       public ArrayList<KHO> getListKho()
+       {
+           ArrayList<KHO> list = new ArrayList<>();
+           String sql ="select * from kho";
+           try {
+               PreparedStatement ps = cn.conn.prepareStatement(sql);
+               rs = ps.executeQuery();
+               
+               while(rs.next())
+               {
+                   KHO k = new KHO();
+                   k.setMaKho(rs.getString("MaKho"));
+                   k.setTenKho(rs.getString("TenKho"));
+                   k.setDiaChi(rs.getString("DiaChi"));
+                   list.add(k);
+               }
            } catch (Exception e) {
                e.printStackTrace();
            }

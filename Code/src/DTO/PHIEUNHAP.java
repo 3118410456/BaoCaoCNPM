@@ -10,7 +10,7 @@ package DTO;
  * @author Admin
  */
 public class PHIEUNHAP {
-    String MaPN ,NgayNhap,MaNV,MaKho,MaNCC;
+    String MaPN ,NgayNhap,MaNV,MaKho,MaNCC,TrangThai;
 
     public String getMaKho() {
         return MaKho;
@@ -60,16 +60,17 @@ public class PHIEUNHAP {
     public void setTongTien(double TongTien) {
         this.TongTien = TongTien;
     }
-    
-    
+
+    public String getTrangThai() {
+        return TrangThai;
+    }
+
+    public void setTrangThai(String TrangThai) {
+        this.TrangThai = TrangThai;
+    }
     
     public PHIEUNHAP()   {
         
     }
-
-  
-    
-    
-    
     
 }
