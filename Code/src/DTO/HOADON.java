@@ -10,7 +10,9 @@ package DTO;
  * @author MINH TUAN
  */
 public class HOADON {
-    String mahd,manv,ngaytao,makm,makh;
+    String mahd,manv,ngaytao,makm,makh,TrangThai;
+    Double tongcong,tongtientra,thongke;
+    int phantramkm;
     
     public String getMaKH() {
         return makh;
@@ -20,8 +22,7 @@ public class HOADON {
         this.makh = makh;
     }
     
-    Double tongcong,tongtientra,thongke;
-    int phantramkm;
+    
 
     public Double getThongke() {
         return thongke;
@@ -90,5 +91,15 @@ public class HOADON {
     public void setPhanTramKM(int phantramkm) {
         this.phantramkm = phantramkm;
     }
+
+    public String getTrangThai() {
+        return TrangThai;
+    }
+
+    public void setTrangThai(String TrangThai) {
+        this.TrangThai = TrangThai;
+    }
+    
+    
     
 }

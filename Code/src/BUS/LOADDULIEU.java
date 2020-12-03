@@ -6,9 +6,11 @@
 package BUS;
 
 import DAO.DAO;
+import DTO.CALAM;
 import DTO.CHUCVU;
 import DTO.CTHD;
 import DTO.CTPN;
+import DTO.CTPX;
 import DTO.HOADON;
 import DTO.KHACHHANG;
 import DTO.KHO;
@@ -18,6 +20,7 @@ import DTO.NGUOIDUNG;
 import DTO.NHACUNGCAP;
 import DTO.NHANVIEN;
 import DTO.PHIEUNHAP;
+import DTO.PHIEUXUAT;
 import DTO.SANPHAM;
 import DTO.SANPHAMLOI;
 import DTO.TAIKHOAN;
@@ -219,6 +222,7 @@ public class LOADDULIEU {
                 h.setTongCong(rs.getDouble("TongCong"));
                 h.setPhanTramKM(rs.getInt("PhanTramKM"));
                 h.setTongTienTra(rs.getDouble("TongTienTra"));
+                h.setTrangThai(rs.getString("TrangThai"));
                 
                 list.add(h);
             }
@@ -375,7 +379,7 @@ public class LOADDULIEU {
     }
         public ArrayList<PHIEUNHAP> getListPhieuNhap()
     {
-        String sql = "select * from phieunhap";
+        String sql = "select *,ctpn.soluong*ctpn.gianhap as thanhtien from phieunhap , ctpn where phieunhap.mapn=ctpn.mapn";
         ArrayList<PHIEUNHAP> list = new ArrayList<>();
         try {
             ps = cn.conn.createStatement();
@@ -388,7 +392,7 @@ public class LOADDULIEU {
             kh.setMaNV(rs.getString("MaNV"));
             kh.setMaNCC(rs.getString("MaNCC"));
             kh.setNgayNhap(rs.getString("NgayNhap"));
-            kh.setTongTien(rs.getDouble("TongTien"));
+            kh.setTongTien(rs.getDouble("thanhtien"));
             kh.setTrangThai(rs.getString("TrangThai"));
             
             list.add(kh);
@@ -450,7 +454,7 @@ public class LOADDULIEU {
 //"from ctpn\n" +
 //"where MaPN is null\n" +
 //"group by masp,gianhap";
-        String sql = "select * from phieunhap , ctpn where phieunhap.MaPN = ctpn.MaPN";
+        String sql = "select * from ctpn";
         ArrayList<CTPN> list = new ArrayList<>();
         try {
             ps = cn.conn.createStatement();
@@ -458,6 +462,7 @@ public class LOADDULIEU {
         while(rs.next())
         {
             CTPN kh = new CTPN();
+            kh.setMaPN(rs.getString("mapn"));
             kh.setMaSP(rs.getString("masp"));
             kh.setTenSP(rs.getString("Tensp"));
             kh.setTenLoaiSP(rs.getString("TenLoaiSP"));
@@ -472,6 +477,7 @@ public class LOADDULIEU {
         }
         return list;
     }
+       
        public ArrayList<CTPN> getListCTPN(String mapn)
     {
         String sql = "select masp,sum(soluong) as soluong,gianhap,sum(thanhtien) as thanhtien\n" +
@@ -626,4 +632,79 @@ public class LOADDULIEU {
            }
         return list;
        }
+       
+       public ArrayList<PHIEUXUAT> getListPhieuXuat()
+    {
+//        String sql = "select masp,sum(soluong) as soluong,gianhap,sum(thanhtien) as thanhtien\n" +
+//"from ctpn\n" +
+//"where MaPN is null\n" +
+//"group by masp,gianhap";
+        String sql = "select * from phieuxuat ";
+        ArrayList<PHIEUXUAT> list = new ArrayList<>();
+        try {
+            ps = cn.conn.createStatement();
+            rs = ps.executeQuery(sql);
+        while(rs.next())
+        {
+            PHIEUXUAT kh = new PHIEUXUAT();
+            kh.setMaPX(rs.getString("MaPX"));
+            kh.setNgayXuat(rs.getString("MaKho"));
+            kh.setMaKho(rs.getString("MaNV"));
+            kh.setMaNV(rs.getString("NgayXuat"));
+            //kh.setThanhTien(rs.getDouble("thanhtien"));
+            kh.setTongTien(rs.getDouble("TongTien"));
+            kh.setTrangThai(rs.getString("TrangThai"));
+            list.add(kh);
+        }
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+       
+       public ArrayList<CTPX> getListCTPX()
+    {
+        String sql = "SELECT ctpx.MaPX,ctpx.MaSP,sanpham.TenSP,ctpx.SoLuong,ctpx.DonGia,sanpham.DonViTinh from phieuxuat,sanpham,ctpx WHERE ctpx.MaSP=sanpham.MaSP";
+        ArrayList<CTPX> list = new ArrayList<>();
+        try {
+            ps = cn.conn.createStatement();
+            rs = ps.executeQuery(sql);
+        while(rs.next())
+        {
+            CTPX kh = new CTPX();
+            kh.setMaPX(rs.getString("MaPX"));
+            kh.setMaSP(rs.getString("MaSP"));
+            kh.setTenSP(rs.getString("TenSP"));
+            kh.setDonViTinh(rs.getString("DonViTinh"));
+            kh.setSoluong(rs.getInt("SoLuong"));
+            kh.setDongia(rs.getDouble("DonGia"));
+            list.add(kh);
+        }
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+       
+        public ArrayList<CALAM> getListCaLam()
+    {
+        String sql = "SELECT * from ca";
+        ArrayList<CALAM> list = new ArrayList<>();
+        try {
+            ps = cn.conn.createStatement();
+            rs = ps.executeQuery(sql);
+        while(rs.next())
+        {
+            CALAM kh = new CALAM();
+            kh.setMaCa(rs.getString("MaCa"));
+            kh.setGioBD(rs.getString("GioBatDau"));
+            kh.setGioKT(rs.getString("GioKetThuc"));
+            kh.setNgayLam(rs.getString("NgayLam"));
+            list.add(kh);
+        }
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
 }

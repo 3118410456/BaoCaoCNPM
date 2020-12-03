@@ -48,21 +48,16 @@ public class TTKHAC extends javax.swing.JFrame {
         initComponents();
         
         card = (CardLayout) panel.getLayout();
-         card.show(panel, "ncc");
+         card.show(panel, "PL");
          modelml = (DefaultTableModel) tblloai.getModel();
-         modelncc = (DefaultTableModel) tblncc.getModel();
          GIAODIENCHINH.setHeader(tblloai);
-         GIAODIENCHINH.setHeader(tblncc);
          listncc = new LOADDULIEU().getListNCC();
          listml = new LOADDULIEU().getListMaLoai();
          for(MALOAI ml : listml)
          {
              modelml.addRow(new Object[]{ml.getMaloai(),ml.getTenloai()});
          }
-         for(NHACUNGCAP ncc : listncc)
-         {
-             modelncc.addRow(new Object[]{ncc.getMaNSX(),ncc.getTenNSX()});
-         }
+         
          DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
         list = new LOADDULIEU().getList();
@@ -124,14 +119,6 @@ public class TTKHAC extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txttenloai = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        NCC = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblncc = new javax.swing.JTable();
-        txttenncc = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtmancc = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         HA = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbldssp = new javax.swing.JTable();
@@ -140,8 +127,7 @@ public class TTKHAC extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        lbncc = new javax.swing.JLabel();
-        lbpn = new javax.swing.JLabel();
+        lbpl = new javax.swing.JLabel();
         lbClose = new javax.swing.JLabel();
         lbMini = new javax.swing.JLabel();
         lbanh = new javax.swing.JLabel();
@@ -235,88 +221,6 @@ public class TTKHAC extends javax.swing.JFrame {
         );
 
         panel.add(PL, "pl");
-
-        NCC.setBackground(new java.awt.Color(47, 48, 48));
-        NCC.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-
-        tblncc.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Mã NCC", "Tên NCC"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblncc.setRowHeight(30);
-        jScrollPane1.setViewportView(tblncc);
-
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Tên nhà cung cấp");
-
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Mã nhà cung cấp");
-
-        jLabel5.setBackground(new java.awt.Color(61, 145, 106));
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Thêm");
-        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel5.setOpaque(true);
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel5MousePressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout NCCLayout = new javax.swing.GroupLayout(NCC);
-        NCC.setLayout(NCCLayout);
-        NCCLayout.setHorizontalGroup(
-            NCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(NCCLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(NCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(NCCLayout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(NCCLayout.createSequentialGroup()
-                        .addGroup(NCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
-                            .addGroup(NCCLayout.createSequentialGroup()
-                                .addGroup(NCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(txtmancc, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                                    .addComponent(txttenncc))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
-        );
-        NCCLayout.setVerticalGroup(
-            NCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NCCLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtmancc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txttenncc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        panel.add(NCC, "ncc");
 
         HA.setBackground(new java.awt.Color(47, 48, 48));
         HA.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
@@ -430,12 +334,12 @@ public class TTKHAC extends javax.swing.JFrame {
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         jPanel2.setFocusCycleRoot(true);
         jPanel2.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 jPanel2AncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -449,21 +353,12 @@ public class TTKHAC extends javax.swing.JFrame {
             }
         });
 
-        lbncc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbncc.setText("Nhà cung cấp");
-        lbncc.setOpaque(true);
-        lbncc.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbpl.setText("Phân loại");
+        lbpl.setOpaque(true);
+        lbpl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                lbnccMousePressed(evt);
-            }
-        });
-
-        lbpn.setForeground(new java.awt.Color(255, 255, 255));
-        lbpn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbpn.setText("Phân loại");
-        lbpn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                lbpnMousePressed(evt);
+                lbplMousePressed(evt);
             }
         });
 
@@ -520,11 +415,9 @@ public class TTKHAC extends javax.swing.JFrame {
                         .addGap(9, 9, 9)
                         .addComponent(lbClose, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lbncc, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbpn, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(61, 61, 61)
+                        .addComponent(lbpl, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
                         .addComponent(lbanh, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(1, 1, 1))
         );
@@ -534,66 +427,17 @@ public class TTKHAC extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbMini, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbClose, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lbpn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbncc, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lbanh, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbanh, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbpl, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1))
         );
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void lbnccMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbnccMousePressed
-        card.show(panel, "ncc");
-        lbncc.setBackground(Color.WHITE);
-        lbncc.setForeground(Color.BLACK);
-        lbncc.setOpaque(true);
-        
-        lbpn.setBackground(new Color(47,48,48));
-        lbpn.setForeground(Color.WHITE);
-        lbpn.setOpaque(true);
-        
-        lbanh.setBackground(new Color(47,48,48));
-        lbanh.setForeground(Color.WHITE);
-        lbanh.setOpaque(true);
-    }//GEN-LAST:event_lbnccMousePressed
-
-    private void lbpnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbpnMousePressed
-         card.show(panel, "pl");
-         lbpn.setBackground(Color.WHITE);
-        lbpn.setForeground(Color.BLACK);
-        lbpn.setOpaque(true);
-        
-        lbncc.setBackground(new Color(47,48,48));
-        lbncc.setForeground(Color.WHITE);
-        lbncc.setOpaque(true);
-        
-        lbanh.setBackground(new Color(47,48,48));
-        lbanh.setForeground(Color.WHITE);
-        lbanh.setOpaque(true);
-    }//GEN-LAST:event_lbpnMousePressed
-
-    private void jLabel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MousePressed
-         String ma = txtmancc.getText();
-        String ten = txttenncc.getText();
-        if(ma.isEmpty()||ten.isEmpty())
-        {
-            JOptionPane.showMessageDialog(null,"Hãy nhập đầy đủ thông tin !");
-        }
-        else
-        {
-        if(new BUS_THEM().ThemThongTinKhac("NHACUNGCAP",ma,ten))
-                {
-                    txtmancc.setText("");
-                    txttenncc.setText("");
-                    LocList();
-                }
-        }
-    }//GEN-LAST:event_jLabel5MousePressed
 
     private void jLabel8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MousePressed
         String ma = txtmaloai.getText();
@@ -667,17 +511,16 @@ int mx,my;
 
     private void lbanhMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbanhMousePressed
           card.show(panel, "hinh");
-         lbanh.setBackground(Color.WHITE);
+        
+        lbanh.setBackground(Color.WHITE);
         lbanh.setForeground(Color.BLACK);
         lbanh.setOpaque(true);
         
-        lbncc.setBackground(new Color(47,48,48));
-        lbncc.setForeground(Color.WHITE);
-        lbncc.setOpaque(true);
         
-        lbpn.setBackground(new Color(47,48,48));
-        lbpn.setForeground(Color.WHITE);
-        lbpn.setOpaque(true);
+        
+        lbpl.setBackground(new Color(47,48,48));
+        lbpl.setForeground(Color.WHITE);
+        lbpl.setOpaque(true);
     }//GEN-LAST:event_lbanhMousePressed
     static String path;    
     class LabelRenderer implements TableCellRenderer{
@@ -781,6 +624,18 @@ int mx,my;
                 JOptionPane.showMessageDialog(rootPane, "Chọn ảnh cần xóa !");
            }
     }//GEN-LAST:event_jLabel9MousePressed
+
+    private void lbplMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbplMousePressed
+        card.show(panel, "pl");
+        
+        lbpl.setBackground(Color.WHITE);
+        lbpl.setForeground(Color.BLACK);
+        lbpl.setOpaque(true);
+
+        lbanh.setBackground(new Color(47,48,48));
+        lbanh.setForeground(Color.WHITE);
+        lbanh.setOpaque(true);
+    }//GEN-LAST:event_lbplMousePressed
     public void ThemAnh(String name)
     {
          int conf = JOptionPane.showConfirmDialog(rootPane, "Xác nhận thêm ảnh ?");
@@ -851,34 +706,25 @@ int mx,my;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel HA;
-    private javax.swing.JPanel NCC;
     private javax.swing.JPanel PL;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lbClose;
     private javax.swing.JLabel lbMini;
     private javax.swing.JLabel lbanh;
-    private javax.swing.JLabel lbncc;
-    private javax.swing.JLabel lbpn;
+    private javax.swing.JLabel lbpl;
     private javax.swing.JLabel me;
     private javax.swing.JPanel panel;
     private javax.swing.JTable tbldssp;
     private javax.swing.JTable tblloai;
-    private javax.swing.JTable tblncc;
     private javax.swing.JTextField txtmaloai;
-    private javax.swing.JTextField txtmancc;
     private javax.swing.JTextField txttenloai;
-    private javax.swing.JTextField txttenncc;
     // End of variables declaration//GEN-END:variables
 }
