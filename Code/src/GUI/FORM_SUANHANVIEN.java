@@ -4,6 +4,7 @@ package GUI;
 import BUS.BUS_SUA;
 import BUS.LOADDULIEU;
 import DAO.KiemTraLoi;
+import DTO.CHUCVU;
 import DTO.SANPHAM;
 import DTO.NHACUNGCAP;
 import DTO.MALOAI;
@@ -15,36 +16,38 @@ import static GUI.GIAODIENCHINH.tblqlsp;
 import static GUI.FORM_THEM.listncc;
 import java.awt.Color;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-public class FORM_SUA extends javax.swing.JFrame {
+public class FORM_SUANHANVIEN extends javax.swing.JFrame {
     public static DefaultComboBoxModel boxncc,boxml;
-    public static ArrayList<NHACUNGCAP> listncc = new ArrayList<>();
+    public static ArrayList<CHUCVU> listchucvu = new ArrayList<>();
     public static ArrayList<MALOAI> listml = new ArrayList<>();
-    public FORM_SUA() {
+    static SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd");
+    public FORM_SUANHANVIEN() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-       boxncc = (DefaultComboBoxModel) comboncc.getModel();
+       boxncc = (DefaultComboBoxModel) combonchucvu.getModel();
         listncc = new LOADDULIEU().getListNCC();
-        for(NHACUNGCAP ncc : listncc)
+        for(CHUCVU ncc : listchucvu)
         {
-            boxncc.addElement(ncc.getMaNSX() + "  " + ncc.getTenNSX());
+            boxncc.addElement(ncc.getMaCV() + "  " + ncc.getTenCV());
            
         }
-       boxml = (DefaultComboBoxModel) combomaloai.getModel();
-        listml = new LOADDULIEU().getListMaLoai();
-        for(MALOAI ml : listml)
-        {
-            boxml.addElement(ml.getMaloai() + "  " + ml.getTenloai());
-        }
-        txttensp.setCaretColor(Color.WHITE);
-        txtmasp.setCaretColor(Color.WHITE);
-        txtdvt.setCaretColor(Color.WHITE);
-        txtgiaban.setCaretColor(Color.WHITE);
-        txtsoluong.setCaretColor(Color.WHITE);
+//       boxml = (DefaultComboBoxModel) combomaloai.getModel();
+//        listml = new LOADDULIEU().getListMaLoai();
+//        for(MALOAI ml : listml)
+//        {
+//            boxml.addElement(ml.getMaloai() + "  " + ml.getTenloai());
+//        }
+        txttennv.setCaretColor(Color.WHITE);
+        txtmanv.setCaretColor(Color.WHITE);
+        txtsdt.setCaretColor(Color.WHITE);
+        txtdiachi.setCaretColor(Color.WHITE);
+//        txtsoluong.setCaretColor(Color.WHITE);
     }
     
     /**
@@ -60,17 +63,18 @@ public class FORM_SUA extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txttensp = new javax.swing.JTextField();
-        txtmasp = new javax.swing.JTextField();
-        txtdvt = new javax.swing.JTextField();
-        txtsoluong = new javax.swing.JTextField();
-        txtgiaban = new javax.swing.JTextField();
+        txttennv = new javax.swing.JTextField();
+        txtmanv = new javax.swing.JTextField();
+        txtsdt = new javax.swing.JTextField();
+        txtdiachi = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        comboncc = new javax.swing.JComboBox<>();
+        combonchucvu = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        combomaloai = new javax.swing.JComboBox<>();
+        combogioitinh = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        txtgianhap = new javax.swing.JTextField();
+        txtemail = new javax.swing.JTextField();
+        date = new com.toedter.calendar.JDateChooser();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -144,44 +148,43 @@ public class FORM_SUA extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        txttensp.setForeground(new java.awt.Color(255, 255, 255));
-        txttensp.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tên sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
-        txttensp.setOpaque(false);
+        txttennv.setForeground(new java.awt.Color(255, 255, 255));
+        txttennv.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tên nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
+        txttennv.setOpaque(false);
 
-        txtmasp.setForeground(new java.awt.Color(255, 255, 255));
-        txtmasp.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mã sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
-        txtmasp.setOpaque(false);
+        txtmanv.setForeground(new java.awt.Color(255, 255, 255));
+        txtmanv.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mã nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
+        txtmanv.setOpaque(false);
 
-        txtdvt.setForeground(new java.awt.Color(255, 255, 255));
-        txtdvt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Đơn vị tính", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
-        txtdvt.setOpaque(false);
+        txtsdt.setForeground(new java.awt.Color(255, 255, 255));
+        txtsdt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Số điện thoại", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
+        txtsdt.setOpaque(false);
 
-        txtsoluong.setForeground(new java.awt.Color(255, 255, 255));
-        txtsoluong.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Số lượng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
-        txtsoluong.setOpaque(false);
-
-        txtgiaban.setForeground(new java.awt.Color(255, 255, 255));
-        txtgiaban.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Đơn giá bán", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
-        txtgiaban.setOpaque(false);
+        txtdiachi.setForeground(new java.awt.Color(255, 255, 255));
+        txtdiachi.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Địa chỉ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
+        txtdiachi.setOpaque(false);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("SỬA SẢN PHẨM");
+        jLabel3.setText("SỬA TT NHÂN VIÊN");
 
-        comboncc.setMaximumRowCount(40);
+        combonchucvu.setMaximumRowCount(40);
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Nhà sản xuất");
+        jLabel5.setText("Chức vụ");
 
-        combomaloai.setMaximumRowCount(40);
+        combogioitinh.setMaximumRowCount(40);
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Mã loại");
+        jLabel6.setText("Giới tính");
 
-        txtgianhap.setForeground(new java.awt.Color(255, 255, 255));
-        txtgianhap.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Đơn giá nhập", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
-        txtgianhap.setOpaque(false);
+        txtemail.setForeground(new java.awt.Color(255, 255, 255));
+        txtemail.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Email", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
+        txtemail.setOpaque(false);
+
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Ngày sinh");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -191,19 +194,20 @@ public class FORM_SUA extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtgianhap, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
+                    .addComponent(jLabel5)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(combomaloai, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(comboncc, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtmasp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
-                        .addComponent(txttensp, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtsoluong, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtdvt, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtgiaban, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel5))
-                .addContainerGap(50, Short.MAX_VALUE))
+                        .addComponent(combogioitinh, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(combonchucvu, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtmanv, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                        .addComponent(txttennv, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtsdt, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtdiachi, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,25 +215,27 @@ public class FORM_SUA extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtmasp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtmanv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
-                .addComponent(txttensp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txttennv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
                 .addGap(10, 10, 10)
-                .addComponent(combomaloai, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(txtsoluong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(combogioitinh, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(txtsdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
-                .addComponent(txtdvt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addComponent(txtgiaban, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtdiachi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(txtgianhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(comboncc, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(combonchucvu, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -266,50 +272,50 @@ public class FORM_SUA extends javax.swing.JFrame {
     int dongcansua;
     String macansua;
     private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
-      NumberFormat vnmoney = NumberFormat.getInstance(new Locale("vi", "vn"));
-       boolean check = false;
-       KiemTraLoi ck = new KiemTraLoi();
-       if(txtmasp.getText().isEmpty()==false&&txtdvt.getText().isEmpty()==false&&txttensp.getText().isEmpty()==false)
-       {
-           if(ck.KT_SoLuong(txtsoluong.getText())&&ck.KT_SoLuong(txtgiaban.getText()))
-           {
-               if(Integer.parseInt(txtsoluong.getText())>0&&Double.parseDouble(txtgiaban.getText())>0)
-               {
-                   check=true;
-               }
-               else
-               {
-                   JOptionPane.showMessageDialog(rootPane, "Hãy nhập số luọng hoặc đơn giá hợp lệ");
-               }
-           }
-           else
-           {
-               JOptionPane.showMessageDialog(rootPane, "Hãy nhập số luọng hoặc đơn giá hợp lệ");
-           }
-       }
-       else
-       {
-           JOptionPane.showMessageDialog(rootPane, "Hãy nhập đầy đủ thông tin");
-       } 
-      
-      
-      
-      
-      if(check==true)
-      {
-      String MaSP = txtmasp.getText() ;
-       String TenSP =  String.valueOf(txttensp.getText());
-       String MaLoai = FORM_THEM.tachtrai(String.valueOf(combomaloai.getSelectedItem()));
-       String SoLuong = txtsoluong.getText();
-       String DonViTinh = txtdvt.getText();
-       String TenNhaSX = FORM_THEM.tachtrai(String.valueOf(comboncc.getSelectedItem()));
-       Double DonGia = Double.parseDouble(String.valueOf(txtgiaban.getText()));
-       
-       
-       
-       int k=JOptionPane.showConfirmDialog(rootPane, "Bạn có chắc chắn muốn sửa ?");
-       if(new BUS_SUA().suaSP(GIAODIENCHINH.list.get(dongcansua).getMaSP(), MaSP, TenSP, MaLoai, Integer.parseInt(SoLuong), DonViTinh, DonGia, TenNhaSX)&&k==0)
-       {
+//      NumberFormat vnmoney = NumberFormat.getInstance(new Locale("vi", "vn"));
+//       boolean check = false;
+//       KiemTraLoi ck = new KiemTraLoi();
+//       if(txtmanv.getText().isEmpty()==false&&txtsdt.getText().isEmpty()==false&&txttennv.getText().isEmpty()==false)
+//       {
+//           if(ck.KT_SoLuong(txtsoluong.getText())&&ck.KT_SoLuong(txtdiachi.getText()))
+//           {
+//               if(Integer.parseInt(txtsoluong.getText())>0&&Double.parseDouble(txtdiachi.getText())>0)
+//               {
+//                   check=true;
+//               }
+//               else
+//               {
+//                   JOptionPane.showMessageDialog(rootPane, "Hãy nhập số luọng hoặc đơn giá hợp lệ");
+//               }
+//           }
+//           else
+//           {
+//               JOptionPane.showMessageDialog(rootPane, "Hãy nhập số luọng hoặc đơn giá hợp lệ");
+//           }
+//       }
+//       else
+//       {
+//           JOptionPane.showMessageDialog(rootPane, "Hãy nhập đầy đủ thông tin");
+//       } 
+//      
+//      
+//      
+//      
+//      if(check==true)
+//      {
+//      String MaSP = txtmanv.getText() ;
+//       String TenSP =  String.valueOf(txttennv.getText());
+//       //String GioiTinh = String.valueOf(combogioitinh.getText()); 
+//       String NgaySinh = sdf1.format(date);
+//       String SDT = txtsdt.getText();
+//       String ChucVu = FORM_THEM.tachtrai(String.valueOf(combonchucvu.getSelectedItem()));
+//       String DiaChi = txtdiachi.getText();
+//       
+//       
+//       
+//       int k=JOptionPane.showConfirmDialog(rootPane, "Bạn có chắc chắn muốn sửa ?");
+//       if(new BUS_SUA().suaSP(GIAODIENCHINH.list.get(dongcansua).getMaSP(), MaSP, TenSP, MaLoai, Integer.parseInt(SoLuong), DonViTinh, DonGia, TenNhaSX)&&k==0)
+//       {
            
            
           
@@ -321,16 +327,16 @@ public class FORM_SUA extends javax.swing.JFrame {
            giaodien.modelqlsp.setValueAt(DonViTinh, dongcansua, 4);
            giaodien.modelqlsp.setValueAt(DonGia, dongcansua, 5);
            giaodien.modelqlsp.setValueAt(TenNhaSX, dongcansua, 6);*/
-        
-        
-         GIAODIENCHINH.LocAll();
-           this.dispose();
-       }
-       else if(new BUS_SUA().suaSP(GIAODIENCHINH.list.get(dongcansua).getMaSP(), MaSP, TenSP, MaLoai, Integer.parseInt(SoLuong), DonViTinh, DonGia, TenNhaSX)==false)
-       {
-           JOptionPane.showMessageDialog(rootPane, "Sửa thất bại");
-       }
-      }
+//        
+//        
+////         GIAODIENCHINH.LocAll();
+////           this.dispose();
+////       }
+////       else if(new BUS_SUA().suaSP(GIAODIENCHINH.list.get(dongcansua).getMaSP(), MaSP, TenSP, MaLoai, Integer.parseInt(SoLuong), DonViTinh, DonGia, TenNhaSX)==false)
+////       {
+////           JOptionPane.showMessageDialog(rootPane, "Sửa thất bại");
+////       }
+////      }
     }//GEN-LAST:event_jLabel2MousePressed
 
     /**
@@ -364,27 +370,28 @@ public class FORM_SUA extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FORM_SUA().setVisible(true);
+                new FORM_SUANHANVIEN().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JComboBox<String> combomaloai;
-    public static javax.swing.JComboBox<String> comboncc;
+    public static javax.swing.JComboBox<String> combogioitinh;
+    public static javax.swing.JComboBox<String> combonchucvu;
+    private com.toedter.calendar.JDateChooser date;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    public javax.swing.JTextField txtdvt;
-    public javax.swing.JTextField txtgiaban;
-    public javax.swing.JTextField txtgianhap;
-    public javax.swing.JTextField txtmasp;
-    public javax.swing.JTextField txtsoluong;
-    public javax.swing.JTextField txttensp;
+    public javax.swing.JTextField txtdiachi;
+    public javax.swing.JTextField txtemail;
+    public javax.swing.JTextField txtmanv;
+    public javax.swing.JTextField txtsdt;
+    public javax.swing.JTextField txttennv;
     // End of variables declaration//GEN-END:variables
 
     private static class SanPham {
