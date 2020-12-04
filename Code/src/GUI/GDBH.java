@@ -48,7 +48,7 @@ public class GDBH extends javax.swing.JFrame {
     public static ArrayList<CTHD> listcthd = new ArrayList<>();
     public GDBH() {
         initComponents();
-        time.setVisible(false);
+        //time.setVisible(false);
         setLocationRelativeTo(null);
         setResizable(false);
         modelgd = (DefaultTableModel) tblgiaodien.getModel();
@@ -78,7 +78,7 @@ public class GDBH extends javax.swing.JFrame {
             modelsp.addRow(new Object[]{s.getTenSP(),lb});
         }
         LocListCTHD();
-        lbname.setText("Nhân viên : " + GIAODIENCHINH.ttdn.get(0).getHoten());
+        //lbname.setText("Nhân viên : " + GIAODIENCHINH.ttdn.get(0).getHoten());
       
     }
     class LabelRenderer implements TableCellRenderer{
@@ -128,11 +128,12 @@ public class GDBH extends javax.swing.JFrame {
         lbthanhtien = new javax.swing.JLabel();
         lbtienthua = new javax.swing.JLabel();
         lbtiennhan = new javax.swing.JLabel();
-        time = new javax.swing.JLabel();
         txtmakh = new javax.swing.JTextField();
         chuy = new javax.swing.JLabel();
         tenkh = new javax.swing.JLabel();
         tktsp = new javax.swing.JLabel();
+        chuy1 = new javax.swing.JLabel();
+        txtmakh1 = new javax.swing.JTextField();
 
         Sua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DoAn/edit.png"))); // NOI18N
         Sua.setText("Sửa");
@@ -376,17 +377,15 @@ public class GDBH extends javax.swing.JFrame {
 
         lbthanhtien.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         lbthanhtien.setForeground(new java.awt.Color(255, 255, 255));
-        lbthanhtien.setText("Thành tiền");
+        lbthanhtien.setText("Tổng tiền");
 
         lbtienthua.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         lbtienthua.setForeground(new java.awt.Color(255, 255, 255));
-        lbtienthua.setText("Tiền thừa");
+        lbtienthua.setText("Tiền phải trả");
 
         lbtiennhan.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         lbtiennhan.setForeground(new java.awt.Color(255, 255, 255));
-        lbtiennhan.setText("Tiền nhận");
-
-        time.setText("night");
+        lbtiennhan.setText("Phần trăm khuyến mãi");
 
         txtmakh.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -404,6 +403,16 @@ public class GDBH extends javax.swing.JFrame {
         tktsp.setForeground(new java.awt.Color(255, 255, 255));
         tktsp.setText("Tìm kiếm tên sản phẩm");
 
+        chuy1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        chuy1.setForeground(new java.awt.Color(255, 255, 255));
+        chuy1.setText("Nhập mã khuyến mãi");
+
+        txtmakh1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtmakh1KeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelcolorLayout = new javax.swing.GroupLayout(panelcolor);
         panelcolor.setLayout(panelcolorLayout);
         panelcolorLayout.setHorizontalGroup(
@@ -411,45 +420,40 @@ public class GDBH extends javax.swing.JFrame {
             .addGroup(panelcolorLayout.createSequentialGroup()
                 .addGroup(panelcolorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelcolorLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(panelcolorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelcolorLayout.createSequentialGroup()
-                                .addComponent(txtmakh, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(tenkh, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(chuy))
-                        .addGap(157, 157, 157)
-                        .addGroup(panelcolorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbtiennhan)
-                            .addComponent(lbtienthua, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(55, 55, 55)
-                        .addGroup(panelcolorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtkhachdua, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelcolorLayout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addComponent(tienthoi, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(panelcolorLayout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(time))
+                        .addGap(10, 10, 10)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1002, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelcolorLayout.createSequentialGroup()
                         .addGroup(panelcolorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelcolorLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1002, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelcolorLayout.createSequentialGroup()
                                 .addGap(12, 12, 12)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(350, 350, 350)
-                                .addComponent(lbthanhtien)
-                                .addGap(47, 47, 47)
-                                .addComponent(thanhtien, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(14, 14, 14)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelcolorLayout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addGroup(panelcolorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelcolorLayout.createSequentialGroup()
+                                        .addComponent(txtmakh, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(tenkh, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(chuy)
+                                    .addComponent(txtmakh1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(chuy1))))
+                        .addGap(28, 28, 28)
                         .addGroup(panelcolorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txttimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tktsp))))
+                            .addComponent(lbtiennhan)
+                            .addComponent(lbthanhtien)
+                            .addComponent(lbtienthua))
+                        .addGap(57, 57, 57)
+                        .addGroup(panelcolorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtkhachdua, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(thanhtien, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tienthoi, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(14, 14, 14)
+                .addGroup(panelcolorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txttimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tktsp))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -471,36 +475,38 @@ public class GDBH extends javax.swing.JFrame {
                                 .addGap(16, 16, 16)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelcolorLayout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(lbthanhtien))
+                                .addGap(7, 7, 7)
+                                .addComponent(thanhtien, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelcolorLayout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(thanhtien, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(4, 4, 4)
+                                .addGap(18, 18, 18)
+                                .addComponent(lbthanhtien)))
                         .addGroup(panelcolorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelcolorLayout.createSequentialGroup()
-                                .addComponent(lbtiennhan, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(lbtienthua))
-                            .addGroup(panelcolorLayout.createSequentialGroup()
-                                .addGap(5, 5, 5)
+                                .addGap(9, 9, 9)
+                                .addComponent(chuy, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(panelcolorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panelcolorLayout.createSequentialGroup()
-                                        .addComponent(txtkhachdua, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(21, 21, 21)
-                                        .addComponent(tienthoi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(panelcolorLayout.createSequentialGroup()
-                                        .addComponent(chuy, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(panelcolorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtmakh, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(tenkh, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                    .addComponent(txtmakh, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tenkh, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(panelcolorLayout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addGroup(panelcolorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lbtiennhan, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtkhachdua, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelcolorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelcolorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lbtienthua)
+                                .addComponent(tienthoi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelcolorLayout.createSequentialGroup()
+                                .addComponent(chuy1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtmakh1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 21, Short.MAX_VALUE))
                     .addGroup(panelcolorLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(tktsp)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txttimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(time))
+                        .addComponent(txttimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30))))
         );
 
         getContentPane().add(panelcolor);
@@ -922,84 +928,84 @@ public class GDBH extends javax.swing.JFrame {
     }//GEN-LAST:event_txttimkiemKeyReleased
 
     private void modeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modeMousePressed
-        if(time.getText().equals("day")==false)
-       {
-        Timer tsa;
-        tsa = new Timer(1,new ActionListener() {
-            int iday=1;
-            boolean run = true;
-            public void actionPerformed(ActionEvent e) {
-                if(run==true)
-                {
-                if(iday<=230)
-                 {
-                 panelcolor.setBackground(new Color(iday,iday,iday));
-                 iday++;
-                 thanhtien.setForeground(Color.BLACK);
-                 lbtiennhan.setForeground(Color.BLACK);
-                 lbtienthua.setForeground(Color.BLACK);
-                 tienthoi.setForeground(Color.BLACK);
-                 lbthanhtien.setForeground(Color.BLACK);
-                 chuy.setForeground(Color.BLACK);
-                 tenkh.setForeground(Color.BLACK);
-                 tktsp.setForeground(Color.BLACK);
-                 }
-                 else
-                 {
-                     run=false;
-                     time.setText("day");
-                     mode.setIcon(new ImageIcon("..\\DemoDoAn\\src\\DoAn\\moon.png"));
-                 }
-                }
-            }
-           
-        });
-        
-      
-            tsa.start();
-       
-       }
-       if(time.getText().equals("night")==false)
-       {
-        Timer tsa;
-       
-        tsa = new Timer(1,new ActionListener() {
-             boolean run = true;
-             int icolor=255;
-            public void actionPerformed(ActionEvent e) {
-                if(run==true)
-                {
-                if(icolor>=0)
-                 {
-                     if(icolor==48)
-                 {
-                     panelcolor.setBackground(new Color(icolor-1,icolor,icolor));
-                      time.setText("night");
-                      thanhtien.setForeground(Color.WHITE);
-                 lbtiennhan.setForeground(Color.WHITE);
-                 lbtienthua.setForeground(Color.WHITE);
-                 tienthoi.setForeground(Color.WHITE);
-                 lbthanhtien.setForeground(Color.WHITE);
-                 chuy.setForeground(Color.WHITE);
-                 tenkh.setForeground(Color.WHITE);
-                 tktsp.setForeground(Color.WHITE);
-                      mode.setIcon(new ImageIcon("..\\DemoDoAn\\src\\DoAn\\sun.png"));
-                     run=false;
-                 }
-                 panelcolor.setBackground(new Color(icolor,icolor,icolor));
-                 icolor--;
-                 
-                 }
-               
-                
-                }
-            }
-           
-        });
-
-            tsa.start();
-        
-       } 
+//        if(time.getText().equals("day")==false)
+//       {
+//        Timer tsa;
+//        tsa = new Timer(1,new ActionListener() {
+//            int iday=1;
+//            boolean run = true;
+//            public void actionPerformed(ActionEvent e) {
+//                if(run==true)
+//                {
+//                if(iday<=230)
+//                 {
+//                 panelcolor.setBackground(new Color(iday,iday,iday));
+//                 iday++;
+//                 thanhtien.setForeground(Color.BLACK);
+//                 lbtiennhan.setForeground(Color.BLACK);
+//                 lbtienthua.setForeground(Color.BLACK);
+//                 tienthoi.setForeground(Color.BLACK);
+//                 lbthanhtien.setForeground(Color.BLACK);
+//                 chuy.setForeground(Color.BLACK);
+//                 tenkh.setForeground(Color.BLACK);
+//                 tktsp.setForeground(Color.BLACK);
+//                 }
+//                 else
+//                 {
+//                     run=false;
+//                     time.setText("day");
+//                     mode.setIcon(new ImageIcon("..\\DemoDoAn\\src\\DoAn\\moon.png"));
+//                 }
+//                }
+//            }
+//           
+//        });
+//        
+//      
+//            tsa.start();
+//       
+//       }
+//       if(time.getText().equals("night")==false)
+//       {
+//        Timer tsa;
+//       
+//        tsa = new Timer(1,new ActionListener() {
+//             boolean run = true;
+//             int icolor=255;
+//            public void actionPerformed(ActionEvent e) {
+//                if(run==true)
+//                {
+//                if(icolor>=0)
+//                 {
+//                     if(icolor==48)
+//                 {
+//                     panelcolor.setBackground(new Color(icolor-1,icolor,icolor));
+//                      time.setText("night");
+//                      thanhtien.setForeground(Color.WHITE);
+//                 lbtiennhan.setForeground(Color.WHITE);
+//                 lbtienthua.setForeground(Color.WHITE);
+//                 tienthoi.setForeground(Color.WHITE);
+//                 lbthanhtien.setForeground(Color.WHITE);
+//                 chuy.setForeground(Color.WHITE);
+//                 tenkh.setForeground(Color.WHITE);
+//                 tktsp.setForeground(Color.WHITE);
+//                      mode.setIcon(new ImageIcon("..\\DemoDoAn\\src\\DoAn\\sun.png"));
+//                     run=false;
+//                 }
+//                 panelcolor.setBackground(new Color(icolor,icolor,icolor));
+//                 icolor--;
+//                 
+//                 }
+//               
+//                
+//                }
+//            }
+//           
+//        });
+//
+//            tsa.start();
+//        
+//       } 
     }//GEN-LAST:event_modeMousePressed
 
     private void txtkhachduaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtkhachduaKeyReleased
@@ -1093,6 +1099,10 @@ public class GDBH extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_txtmakhKeyReleased
 
+    private void txtmakh1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtmakh1KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtmakh1KeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -1134,6 +1144,7 @@ public class GDBH extends javax.swing.JFrame {
     private javax.swing.JMenuItem Sua;
     private javax.swing.JMenuItem Xoa;
     private javax.swing.JLabel chuy;
+    private javax.swing.JLabel chuy1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -1153,10 +1164,10 @@ public class GDBH extends javax.swing.JFrame {
     private javax.swing.JLabel tenkh;
     private javax.swing.JLabel thanhtien;
     private javax.swing.JLabel tienthoi;
-    private javax.swing.JLabel time;
     private javax.swing.JLabel tktsp;
     private javax.swing.JTextField txtkhachdua;
     private javax.swing.JTextField txtmakh;
+    private javax.swing.JTextField txtmakh1;
     private javax.swing.JTextField txttimkiem;
     // End of variables declaration//GEN-END:variables
 }

@@ -19,6 +19,7 @@ import DTO.MALOAI;
 import DTO.NGUOIDUNG;
 import DTO.NHACUNGCAP;
 import DTO.NHANVIEN;
+import DTO.PHANCONGCA;
 import DTO.PHIEUNHAP;
 import DTO.PHIEUXUAT;
 import DTO.SANPHAM;
@@ -707,4 +708,24 @@ public class LOADDULIEU {
         }
         return list;
     }
+        
+       public ArrayList<PHANCONGCA> getListPhanCongCa()
+    {
+        String sql = "SELECT * from phancongca";
+        ArrayList<PHANCONGCA> list = new ArrayList<>();
+        try {
+            ps = cn.conn.createStatement();
+            rs = ps.executeQuery(sql);
+        while(rs.next())
+        {
+            PHANCONGCA kh = new PHANCONGCA();
+            kh.setMaCa(rs.getString("MaCa"));
+            kh.setMaNV(rs.getString("MaNV"));
+            list.add(kh);
+        }
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    } 
 }
