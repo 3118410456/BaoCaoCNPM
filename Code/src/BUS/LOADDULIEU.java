@@ -25,6 +25,7 @@ import DTO.PHIEUXUAT;
 import DTO.SANPHAM;
 import DTO.SANPHAMLOI;
 import DTO.TAIKHOAN;
+import DTO.THONGTINKHO;
 import DTO.TUDO;
 import GUI.GIAODIENCHINH;
 import java.sql.PreparedStatement;
@@ -626,6 +627,34 @@ public class LOADDULIEU {
                    k.setMaKho(rs.getString("MaKho"));
                    k.setTenKho(rs.getString("TenKho"));
                    k.setDiaChi(rs.getString("DiaChi"));
+                   list.add(k);
+               }
+           } catch (Exception e) {
+               e.printStackTrace();
+           }
+        return list;
+       }
+       
+       public ArrayList<THONGTINKHO> getListThongTinKho()
+       {
+           ArrayList<THONGTINKHO> list = new ArrayList<>();
+           String sql ="SELECT thongtinkho.MaKho,thongtinkho.MaSP,sanpham.TenSP , thongtinkho.TenLoaiSP ,thongtinkho.SoLuong,thongtinkho.DonViTinh,phieuxuat.NgayXuat "
+                   + "FROM thongtinkho,sanpham,phieuxuat,ctpx "
+                   + "WHERE sanpham.MaSP=thongtinkho.MaSP AND phieuxuat.MaPX=ctpx.MaPX AND thongtinkho.MaSP=ctpx.MaSP ";
+           try {
+               PreparedStatement ps = cn.conn.prepareStatement(sql);
+               rs = ps.executeQuery();
+               
+               while(rs.next())
+               {
+                   THONGTINKHO k = new THONGTINKHO();
+                   k.setMaKho(rs.getString("MaKho"));
+                   k.setMaSP(rs.getString("MaSP"));
+                   k.setTenSP(rs.getString("TenSP"));
+                   k.setTenLoaiSP(rs.getString("TenLoaiSP"));
+                   k.setSoLuong(rs.getInt("SoLuong"));
+                   k.setDonViTinh(rs.getString("TenSP"));
+                   k.setNgayNhap(rs.getString("NgayXuat"));
                    list.add(k);
                }
            } catch (Exception e) {
