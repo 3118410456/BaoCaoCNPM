@@ -638,7 +638,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
         txtPhanTram = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
         jLabel62 = new javax.swing.JLabel();
-        txtMaCT = new javax.swing.JTextField();
+        txtMaKM = new javax.swing.JTextField();
         jLabel103 = new javax.swing.JLabel();
         khachhang = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -2164,7 +2164,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
         jLabel62.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel62.setText("Mã CTKM ");
 
-        txtMaCT.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        txtMaKM.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
 
         jLabel103.setBackground(new java.awt.Color(61, 145, 106));
         jLabel103.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
@@ -2186,29 +2186,27 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
             ctkmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ctkmLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(ctkmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtMaCT, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addGroup(ctkmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel35)
+                    .addComponent(btnThemKM, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(ctkmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel33, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel62, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(ctkmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTenCT, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNgayBD, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNgayKT, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPhanTram, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(ctkmLayout.createSequentialGroup()
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addGroup(ctkmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel35)
-                            .addComponent(btnThemKM, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(ctkmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel33, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel62, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(ctkmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTenCT, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNgayBD, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNgayKT, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPhanTram, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(ctkmLayout.createSequentialGroup()
-                                .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnReset1)))))
+                        .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnReset1))
+                    .addComponent(txtMaKM, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(145, Short.MAX_VALUE))
         );
         ctkmLayout.setVerticalGroup(
@@ -2218,7 +2216,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
                 .addGroup(ctkmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ctkmLayout.createSequentialGroup()
                         .addGroup(ctkmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtMaCT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMaKM, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel62))
                         .addGap(29, 29, 29)
                         .addGroup(ctkmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -4792,7 +4790,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
 
     private void btnThemKMMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemKMMousePressed
         // TODO add your handling code here:
-        if(txtTenCT.getText().isEmpty() || txtNgayBD.getDate() == null || txtNgayKT.getDate() == null)
+        if(txtMaKM.getText().isEmpty() || txtTenCT.getText().isEmpty() || txtNgayBD.getDate() == null || txtNgayKT.getDate() == null)
         {
             JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập đầy đủ thông tin");
         }
@@ -4818,7 +4816,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
                 if((truoc.after(homqua)&&(sau.after(truoc)||bd.equals(kt))))
                 {
                     KHUYENMAI km = new KHUYENMAI();
-                    km.setMaKM(a);
+                    km.setMaKM(txtMaKM.getText());
                     km.setTenCT(txtTenCT.getText());
                     km.setNgayBatDau(bd);
                     km.setNgayKetThuc(kt);
@@ -4845,6 +4843,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
                
             }
 
+           
         }
     }//GEN-LAST:event_btnThemKMMousePressed
 
@@ -5055,9 +5054,12 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
                 kh.setMakh(ma);
                 if(new BUS_THEM().themKH(kh)){JOptionPane.showMessageDialog(rootPane, "Đã thêm khách hàng");
                 LocListKH();
+                txttenkh.setText("");
+                txtsdtkh.setText("");
                 }
             }
         }
+        
     }//GEN-LAST:event_jLabel40MousePressed
 
     private void jLabel41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel41MouseClicked
@@ -5132,7 +5134,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
         }
         else if(new KiemTraLoi().KT_SDT(sdt) == false)
         {
-            JOptionPane.showMessageDialog(rootPane, "Số điện thoại không hợp lệ !");
+            JOptionPane.showMessageDialog(rootPane, "Số điện thoại bắt đầu bắt từ số 0 và gồm 10 hoặc 11 số !");
         }
         else
         {
@@ -5146,6 +5148,8 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
                {
                    JOptionPane.showMessageDialog(rootPane, "Đã sửa");
                    LocListKH();
+                   txttenkh.setText("");
+                   txtsdtkh.setText("");
                }
                else
                {
@@ -5158,6 +5162,7 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
        {
            JOptionPane.showMessageDialog(rootPane, "Chọn dòng cần sửa !");
        }
+       
        
     }//GEN-LAST:event_jLabel43MousePressed
 
@@ -7271,8 +7276,8 @@ public class GIAODIENCHINH extends javax.swing.JFrame {
     private javax.swing.JTextField ttdnmanv;
     private javax.swing.JTextField ttdnngaysinh;
     private javax.swing.JTextField ttdnsdt;
-    private javax.swing.JTextField txtMaCT;
     private javax.swing.JTextField txtMaCT1;
+    private javax.swing.JTextField txtMaKM;
     private javax.swing.JTextField txtMaNCC;
     private javax.swing.JTextField txtMaNV4;
     private javax.swing.JTextField txtMatKhau4;

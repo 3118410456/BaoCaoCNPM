@@ -468,9 +468,10 @@ public class TTKHAC extends javax.swing.JFrame {
         {
         if(new BUS_THEM().ThemThongTinKhac("PHANLOAI",ma,ten))
         {
+             
+             LocList();
              txtmaloai.setText("");
              txttenloai.setText("");
-             LocList();
         }
         }
     }//GEN-LAST:event_jLabel8MousePressed
